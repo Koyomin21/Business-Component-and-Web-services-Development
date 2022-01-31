@@ -33,7 +33,7 @@ public class Movie {
     private String description;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "movie")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "movie")
     private List<MovieSession> sessions;
 
 

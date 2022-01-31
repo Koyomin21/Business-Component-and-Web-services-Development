@@ -41,7 +41,7 @@ public class MovieSession {
     private LocalTime endTime;
 
 
-    @OneToMany(mappedBy = "session")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "session")
     private List<Booking> bookings;
 
 

@@ -24,7 +24,7 @@ public class Seat {
     @JoinColumn(name="hallId")
     private Hall hall;
 
-    @OneToMany(mappedBy = "seat")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "seat")
     private List<Booking> bookings;
 
     @Override

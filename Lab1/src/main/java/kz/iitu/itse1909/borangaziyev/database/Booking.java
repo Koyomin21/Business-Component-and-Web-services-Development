@@ -51,7 +51,7 @@ public class Booking {
                 "ID: " + this.bookingId + " " +
                 "Customer: " + this.customer.getFirstName() + " " + this.customer.getLastName()+" " +
                 "Session: " + this.session.getStartTime() + " " + this.session.getEndTime() +
-                "Seat: " + this.seat + " " +
+                "Seat: Row: " + this.seat.getRow() + ", Number: " + this.seat.getNumber() +
                 "Is Paid: " + this.isPaid;
     }
 

@@ -22,7 +22,7 @@ public class Hall {
     @Column(name = "capacity")
     private int capacity;
 
-    @OneToMany(mappedBy = "hall")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "hall")
     private List<MovieSession> sessions;
 
     @OneToMany(mappedBy = "hall")

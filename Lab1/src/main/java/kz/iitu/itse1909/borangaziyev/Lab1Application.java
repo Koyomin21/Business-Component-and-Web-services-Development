@@ -22,8 +22,13 @@ public class Lab1Application {
         System.out.println("Movies: " + movieService.getAllMovies());
         System.out.println("Customers: " + customerService.getAllCustomers());
         System.out.println("Bookings: " + bookingService.getAllBookings());
-//
 //        System.out.println("Customers: " + customerService.getAllCustomers());
+
+        // All Customers from session
+        System.out.println(customerService.getAllCustomersFromSession(1));
+        // Get Bookings of a Customer that are paid
+        System.out.println(bookingService.getPaidBookingsByCustomerId(1));
+
 
     }
 

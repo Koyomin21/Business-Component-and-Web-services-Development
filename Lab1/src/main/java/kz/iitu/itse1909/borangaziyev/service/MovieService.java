@@ -2,6 +2,7 @@ package kz.iitu.itse1909.borangaziyev.service;
 
 import kz.iitu.itse1909.borangaziyev.database.Movie;
 //import kz.iitu.itse1909.borangaziyev.database.MovieSession;
+import kz.iitu.itse1909.borangaziyev.database.MovieSession;
 import kz.iitu.itse1909.borangaziyev.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,8 +35,6 @@ public class MovieService {
 
         return sortedMovies;
     }
-
-
 
 
 

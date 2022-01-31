@@ -27,7 +27,7 @@ public class Customer {
     @Column(name = "isVip")
     private boolean isVip;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer")
     private List<Booking> bookings;
 
     @Override

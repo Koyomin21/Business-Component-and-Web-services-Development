@@ -27,8 +27,16 @@ public class Customer {
     @Column(name = "isVip")
     private boolean isVip;
 
-//    @OneToMany(mappedBy = "customer")
-//    private List<Booking> bookings;
+    @OneToMany(mappedBy = "customer")
+    private List<Booking> bookings;
 
-
+    @Override
+    public String toString() {
+        return "Customer: " +
+                "ID: " + this.customerId + " " +
+                "Email: " + this.email + " " +
+                "First Name: " + this.firstName + " " +
+                "Last Name: " + this.lastName + " " +
+                "Is Vip: " + this.isVip;
+    }
 }

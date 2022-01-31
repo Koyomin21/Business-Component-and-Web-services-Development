@@ -24,7 +24,15 @@ public class Seat {
     @JoinColumn(name="hallId")
     private Hall hall;
 
-//    @OneToMany(mappedBy = "seat")
-//    private List<Booking> bookings;
+    @OneToMany(mappedBy = "seat")
+    private List<Booking> bookings;
+
+    @Override
+    public String toString() {
+        return "Seat: " +
+                "Row: " + this.row + " " +
+                "Number: " + this.number + " " +
+                "Hall: " + this.hall.getName();
+    }
 
 }

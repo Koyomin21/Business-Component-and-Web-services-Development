@@ -41,8 +41,8 @@ public class MovieSession {
     private LocalTime endTime;
 
 
-//    @OneToMany(mappedBy = "session")
-//    private List<Booking> bookings;
+    @OneToMany(mappedBy = "session")
+    private List<Booking> bookings;
 
 
     public MovieSession(){}
@@ -56,4 +56,12 @@ public class MovieSession {
 //        this.end = end;
 //
 //    }
+
+    @Override
+    public String toString() {
+        return "Session: " +
+                "Movie: " + this.movie.getTitle() +
+                "Session date: " + this.sessionDate +
+                "Time: " + this.startTime + " - " + this.endTime;
+    }
 }

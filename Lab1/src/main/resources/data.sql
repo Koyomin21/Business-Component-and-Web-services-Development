@@ -42,11 +42,11 @@ VALUES
        (2, 4, '20220608', '14:00', '16:30', 950);
 
 
--- INSERT INTO Booking(customerId, sessionId, seatId, bookingDate, isPaid)
--- VALUES (1, 1, 2, '20221009', 1),
---        (2, 2, 3, '20221008', 1),
---        (3, 5, 2, '20220605', 0),
---        (4, 5, 2, '20220606', 0);
+INSERT INTO Booking(customerId, sessionId, seatId, bookingDate, isPaid)
+VALUES (1, 1, 2, '20221009', true),
+       (2, 2, 3, '20221008', true),
+       (3, 5, 2, '20220605', false),
+       (4, 5, 2, '20220606', false);
 
 
 

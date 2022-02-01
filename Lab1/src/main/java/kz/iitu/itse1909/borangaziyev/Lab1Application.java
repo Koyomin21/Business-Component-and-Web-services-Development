@@ -28,6 +28,9 @@ public class Lab1Application {
         System.out.println(customerService.getAllCustomersFromSession(1));
         // Get Bookings of a Customer that are paid
         System.out.println(bookingService.getPaidBookingsByCustomerId(1));
+        // Movies sorted by published year
+        System.out.println(movieService.getMoviesSortedByPublishedYear());
+        //
 
 
     }

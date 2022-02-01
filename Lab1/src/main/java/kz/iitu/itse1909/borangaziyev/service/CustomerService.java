@@ -35,15 +35,30 @@ public class CustomerService {
         // get session
         MovieSession session = sessionRepository.findById(sessionId).get();
 
-        if(session != null || !session.getBookings().isEmpty()) {
+        if(session != null && !session.getBookings().isEmpty()) {
             List<Booking> sessionBookings = session.getBookings();
-            System.out.println("Session Bookings: ");
-            System.out.println(sessionBookings.size());
             List<Customer> customers = sessionBookings.stream().map(s -> s.getCustomer()).collect(Collectors.toList());
 
             return customers;
         }
 
+        return null;
+    }
+
+    public List<Customer> getVipCustomersFromSession(long sessionId) {
+        // get session
+        MovieSession session = sessionRepository.findById(sessionId).get();
+
+        if(session != null && !session.getBookings().isEmpty()) {
+            // getting bookings
+            List<Booking> sessionBookings = session.getBookings();
+            // getting customers from bookings
+            List<Customer> customers = sessionBookings.stream().map(s -> s.getCustomer()).collect(Collectors.toList());
+            // returning filtered customer list with isVIP = true
+            return customers.stream()
+                    .filter(c -> c.isVip() == true)
+                    .collect(Collectors.toList());
+        }
         return null;
     }
 

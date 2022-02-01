@@ -7,7 +7,7 @@ client and movie theaters by providing online service that allows
 clients to buy a movie ticket without going out anywhere. 
 
 
-## Functionality: ##
+## Functionalities to be implemented in the future: ##
 * Register a new Customer
 * Make a booking
 * Watch available movie sessions

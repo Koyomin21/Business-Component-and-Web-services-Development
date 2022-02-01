@@ -30,7 +30,12 @@ public class Lab1Application {
         System.out.println(bookingService.getPaidBookingsByCustomerId(1));
         // Movies sorted by published year
         System.out.println(movieService.getMoviesSortedByPublishedYear());
-        //
+        // Bookings by Movie Session Id
+        System.out.println(bookingService.getBookingsByMovieSessionId(2));
+        // VIP Customers by Session Id
+        System.out.println(customerService.getVipCustomersFromSession(1));
+        // Get Movie By Session ID
+        System.out.println(movieService.getMovieBySessionId(3));
 
 
     }

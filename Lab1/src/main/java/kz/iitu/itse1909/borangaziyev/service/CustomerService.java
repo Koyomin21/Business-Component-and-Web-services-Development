@@ -10,6 +10,7 @@ import kz.iitu.itse1909.borangaziyev.repository.MovieSessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -59,7 +60,7 @@ public class CustomerService {
                     .filter(c -> c.isVip() == true)
                     .collect(Collectors.toList());
         }
-        return null;
+        return new ArrayList<Customer>();
     }
 
 

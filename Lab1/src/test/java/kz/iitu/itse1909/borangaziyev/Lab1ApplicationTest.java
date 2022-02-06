@@ -20,10 +20,10 @@ class Lab1ApplicationTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Test
-    void testMain() {
-        Lab1Application.main(new String[]{"args"});
-    }
+//    @Test
+//    void testMain() {
+//        Lab1Application.main(new String[]{"args"});
+//    }
 }
 
 //Generated with love by TestMe :) Please report issues and submit feature requests at: http://weirddev.com/forum#!/testme

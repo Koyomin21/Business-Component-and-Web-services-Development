@@ -44,16 +44,15 @@ public class MovieService {
 
     public Movie getMovieBySessionId(long sessionId) {
         // getting session
+        Movie movie = null;
         MovieSession session = sessionRepository.findById(sessionId).get();
 
         if(session != null && session.getMovie() != null) {
             // getting movie from session
-            Movie movie = session.getMovie();
-
-            return movie;
+            movie = session.getMovie();
         }
 
-        return null;
+        return movie;
     }
 
 

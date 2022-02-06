@@ -47,15 +47,14 @@ public class MovieSession {
 
     public MovieSession(){}
 
-//    public MovieSession(Movie movie, Hall hall, int price, LocalDate sessionDate, LocalTime start, LocalTime end) {
-////        this.movie = movie;
-//        this.hall = hall;
-//        this.price = price;
-//        this.sessionDate = sessionDate;
-//        this.start = start;
-//        this.end = end;
-//
-//    }
+    public MovieSession(Hall hall, int price, LocalDate sessionDate, LocalTime startTime, LocalTime endTime) {
+        this.hall = hall;
+        this.price = price;
+        this.sessionDate = sessionDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
+
+    }
 
     @Override
     public String toString() {

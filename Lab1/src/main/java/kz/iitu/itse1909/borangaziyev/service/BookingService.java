@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,21 +45,22 @@ public class BookingService {
                     .filter(b -> b.isPaid())
                     .collect(Collectors.toList());
         }
-        return null;
+        return new ArrayList<Booking>();
     }
 
     public List<Booking> getBookingsByMovieSessionId(long id) {
         // getting seat first
+        List<Booking> sessionBookings = new ArrayList<Booking>();
         MovieSession movieSession = sessionRepository.findById(id).get();
 
         if(movieSession != null && !movieSession.getBookings().isEmpty()) {
             // getting bookings from a Movie Session
-            List<Booking> sessionBookings = movieSession.getBookings();
+            sessionBookings = movieSession.getBookings();
 
             return sessionBookings;
         }
 
-        return null;
+        return sessionBookings;
     }
 
 

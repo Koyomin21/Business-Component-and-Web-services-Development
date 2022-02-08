@@ -10,13 +10,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.core.env.Environment;
+import org.springframework.test.context.TestPropertySource;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Month;
 
 import static org.mockito.Mockito.*;
-
+@TestPropertySource("classpath.defaults.properties")
 class MovieConfigTest {
     @Mock
     Environment environment;
@@ -30,17 +31,30 @@ class MovieConfigTest {
 
     @Test
     void testMovie() {
+        when(environment.getProperty("movie.id")).thenReturn("0");
+        when(environment.getProperty("movie.title")).thenReturn("title");
+        when(environment.getProperty("movie.minutes")).thenReturn("1");
+        when(environment.getProperty("movie.publishedYear")).thenReturn("1");
+        when(environment.getProperty("movie.description")).thenReturn("description");
 
-        when(environment.getProperty("movie.Id")).thenReturn("0");
         Movie result = movieConfig.movie();
         System.out.println(result);
-        Assertions.assertEquals(new Movie("title", 0, 0, "description"), result);
+        Assertions.assertEquals("Movie: ID: 0 Title: title Minutes: 1 Published Year: 1 Description: description", result.toString());
     }
 
     @Test
     void testMovieSession() {
+        when(environment.getProperty("movie.id")).thenReturn("0");
+        when(environment.getProperty("movie.title")).thenReturn("title");
+        when(environment.getProperty("movie.minutes")).thenReturn("1");
+        when(environment.getProperty("movie.publishedYear")).thenReturn("1");
+        when(environment.getProperty("movie.description")).thenReturn("description");
         MovieSession result = movieConfig.movieSession();
-        Assertions.assertEquals(new MovieSession(new Hall(), 0, LocalDate.of(2022, Month.FEBRUARY, 7), LocalTime.of(21, 5, 51), LocalTime.of(21, 5, 51)), result);
+
+        MovieSession expected = new MovieSession();
+        expected.setMovie(movieConfig.movie());
+
+        Assertions.assertEquals(expected, result);
     }
 }
 

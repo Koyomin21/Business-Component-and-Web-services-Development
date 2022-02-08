@@ -31,6 +31,13 @@ public class Config {
         CustomerService customerService = context.getBean(CustomerService.class);
         BookingService bookingService = context.getBean(BookingService.class);
         Seat seat = context.getBean(Seat.class);
+        Movie movie = context.getBean(Movie.class);
+        System.out.println("Default Movie: " + movie);
+        Customer customer = context.getBean(Customer.class);
+        System.out.println("Default Customer: " + customer);
+
+        MovieSession session = context.getBean(MovieSession.class);
+        System.out.println("Default Movie Session: " + session);
 
         System.out.println("Movies: " + movieService.getAllMovies());
         System.out.println("Customers: " + customerService.getAllCustomers());

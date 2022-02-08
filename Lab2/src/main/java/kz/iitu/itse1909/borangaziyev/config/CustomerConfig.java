@@ -21,6 +21,7 @@ public class CustomerConfig {
 
 
     @Bean
+    @Scope(value = "prototype")
     Customer customer() {
         // setting default customer settings
         Customer customer = new Customer();

@@ -15,8 +15,8 @@ public class MovieConfig {
     @Autowired
     Environment environment;
 
-    @Bean(name = "movie")
     @Lazy
+    @Bean(name = "movie", initMethod = "movieInit", destroyMethod = "movieDestroy")
     @Scope("prototype")
     Movie movie() {
         System.out.println("Lazy Movie Initialized with default parameters");
@@ -38,6 +38,7 @@ public class MovieConfig {
         session.setMovie(movie());
         return session;
     }
+
 
 
 

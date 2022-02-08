@@ -13,16 +13,6 @@ import org.springframework.context.support.GenericApplicationContext;
 @Import({MovieConfig.class, CustomerConfig.class})
 public class Config {
 
-    @Autowired
-    private MovieService movieService;
-
-    @Autowired
-    private BookingService bookingService;
-
-    @Autowired
-    private CustomerService customerService;
-
-
     @Bean
     @DependsOn("hall")
     public Seat seat() {

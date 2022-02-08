@@ -46,6 +46,15 @@ public class Movie {
         this.description = description;
     }
 
+    public void movieInit() {
+        System.out.println("Init method of Movie");
+
+    }
+
+    public void movieDestroy() {
+        System.out.println("Init method of destroy");
+    }
+
     @Override
     public String toString() {
         return "Movie: " +

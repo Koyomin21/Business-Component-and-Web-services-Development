@@ -5,6 +5,7 @@ import kz.iitu.itse1909.borangaziyev.database.Booking;
 import kz.iitu.itse1909.borangaziyev.database.Customer;
 
 import kz.iitu.itse1909.borangaziyev.database.MovieSession;
+import kz.iitu.itse1909.borangaziyev.database.Seat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
@@ -17,6 +18,7 @@ public class CustomerConfig {
 
     @Autowired
     private Environment environment;
+
 
     @Bean
     Customer customer() {
@@ -36,8 +38,10 @@ public class CustomerConfig {
         Booking booking = new Booking();
         booking.setCustomer(customer());
         booking.setSession(new MovieSession());
+        booking.setSeat(new Seat());
         return booking;
     }
+
 
 
 

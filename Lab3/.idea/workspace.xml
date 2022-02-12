@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f4eb6bdf-aa1a-44f6-9c06-d2f5c541673c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/config/Config.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/config/CustomerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/config/MovieConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/database/Booking.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/database/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/database/Hall.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/database/Movie.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/database/MovieSession.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/database/Seat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/repository/BookingRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/repository/CustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/repository/MovieRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/repository/MovieSessionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/service/BookingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/service/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/service/MovieService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/defaults.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2513WX5AUeHVOsL4RzCj5dnlvAO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Anuar\IdeaProjects\Lab3\src\main\java\kz\iitu\itse1909\borangaziyev" />
+      <recent name="C:\Users\Anuar\IdeaProjects\Lab3\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Lab3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Lab3" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="kz.iitu.itse1909.borangaziyev.Lab3Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f4eb6bdf-aa1a-44f6-9c06-d2f5c541673c" name="Changes" comment="" />
+      <created>1644680798947</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1644680798947</updated>
+      <workItem from="1644680800551" duration="134000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

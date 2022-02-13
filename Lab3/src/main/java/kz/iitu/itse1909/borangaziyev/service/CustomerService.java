@@ -1,5 +1,6 @@
 package kz.iitu.itse1909.borangaziyev.service;
 
+import kz.iitu.itse1909.borangaziyev.aspects.ExecutionTimeLogger;
 import kz.iitu.itse1909.borangaziyev.database.Booking;
 import kz.iitu.itse1909.borangaziyev.database.Customer;
 import kz.iitu.itse1909.borangaziyev.database.MovieSession;
@@ -25,7 +26,7 @@ public class CustomerService {
         this.sessionRepository = sessionRepository;
     }
 
-
+    @ExecutionTimeLogger
     public List<Customer> getAllCustomers() {
         return (List<Customer>) customerRepository.findAll();
     }

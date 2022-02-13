@@ -4,50 +4,50 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4eb6bdf-aa1a-44f6-9c06-d2f5c541673c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/config/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/config/CustomerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/config/MovieConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/database/Booking.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/database/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/database/Hall.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/database/Movie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/database/MovieSession.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/database/Seat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/repository/BookingRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/repository/CustomerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/repository/MovieRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/repository/MovieSessionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/service/BookingService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/service/CustomerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/service/MovieService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/defaults.properties" afterDir="false" />
+    <list default="true" id="f4eb6bdf-aa1a-44f6-9c06-d2f5c541673c" name="Changes" comment="Lab3. First Commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/aspects/CheckArguments.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/aspects/CheckArgumentsAspect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/aspects/ExecutionTimeLogger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/aspects/ExecutionTimeLoggerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/service/BookingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/service/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/service/MovieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/service/MovieService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="2513WX5AUeHVOsL4RzCj5dnlvAO" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -72,8 +72,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1644680798947</updated>
-      <workItem from="1644680800551" duration="134000" />
+      <workItem from="1644680800551" duration="836000" />
+      <workItem from="1644724503863" duration="4262000" />
+      <workItem from="1644754132474" duration="5905000" />
     </task>
+    <task id="LOCAL-00001" summary="Lab3. First Commit">
+      <created>1644681032175</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1644681032175</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,5 +99,10 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Lab3. First Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lab3. First Commit" />
   </component>
 </project>

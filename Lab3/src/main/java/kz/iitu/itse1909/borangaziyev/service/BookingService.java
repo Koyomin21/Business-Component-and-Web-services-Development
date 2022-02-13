@@ -1,5 +1,6 @@
 package kz.iitu.itse1909.borangaziyev.service;
 
+import kz.iitu.itse1909.borangaziyev.aspects.ExecutionTimeLogger;
 import kz.iitu.itse1909.borangaziyev.database.Booking;
 import kz.iitu.itse1909.borangaziyev.database.Customer;
 import kz.iitu.itse1909.borangaziyev.database.MovieSession;
@@ -27,9 +28,11 @@ public class BookingService {
         System.out.println("Booking Service was born!");
     }
 
+    @ExecutionTimeLogger
     public List<Booking> getAllBookings() {
         return (List<Booking>) bookingRepository.findAll();
     }
+
 
     public List<Booking> getPaidBookingsByCustomerId(long id) {
         // getting customer

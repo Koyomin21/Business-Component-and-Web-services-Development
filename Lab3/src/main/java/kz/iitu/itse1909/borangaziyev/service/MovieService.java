@@ -1,5 +1,7 @@
 package kz.iitu.itse1909.borangaziyev.service;
 
+import kz.iitu.itse1909.borangaziyev.aspects.CheckArguments;
+import kz.iitu.itse1909.borangaziyev.aspects.ExecutionTimeLogger;
 import kz.iitu.itse1909.borangaziyev.database.Movie;
 import kz.iitu.itse1909.borangaziyev.database.MovieSession;
 import kz.iitu.itse1909.borangaziyev.repository.MovieRepository;
@@ -17,19 +19,6 @@ public class MovieService {
     private MovieRepository movieRepository;
     private MovieSessionRepository sessionRepository;
 
-//    @Override
-//    public void afterPropertiesSet() throws Exception {
-//        System.out.println("Init Method from MovieService\nChecking for dummy movies in db: ");
-//        List<Movie> dummyMovies = this.getAllMovies().stream()
-//                .filter(m -> m.getPublishedYear() == 0 || m.getMinutes() == 0)
-//                .collect(Collectors.toList());
-//
-//        if(!dummyMovies.isEmpty()) {
-//            movieRepository.deleteAll(dummyMovies);
-//            System.out.println("Deleted Dummy Movies");
-//        }
-//    }
-
     @Autowired
     public void setMovieRepository(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
@@ -39,6 +28,7 @@ public class MovieService {
         this.sessionRepository = sessionRepository;
     }
 
+    @ExecutionTimeLogger
     public List<Movie> getAllMovies() {
         return (List<Movie>)movieRepository.findAll();
     }
@@ -54,6 +44,7 @@ public class MovieService {
         return sortedMovies;
     }
 
+    @CheckArguments
     public Movie getMovieBySessionId(long sessionId) {
         // getting session
         Movie movie = null;

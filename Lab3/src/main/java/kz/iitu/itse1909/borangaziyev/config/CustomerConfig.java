@@ -21,7 +21,7 @@ public class CustomerConfig {
 
     @Bean
     @Scope(value = "prototype")
-    Customer customer() {
+    public Customer customer() {
         // setting default customer settings
         Customer customer = new Customer();
         customer.setEmail(environment.getProperty("customer.email"));
@@ -34,7 +34,7 @@ public class CustomerConfig {
 
     @Bean
     @DependsOn({"seat", "customer", "movieSession"})
-    Booking booking() {
+    public Booking booking() {
         Booking booking = new Booking();
         booking.setCustomer(customer());
         booking.setSession(new MovieSession());

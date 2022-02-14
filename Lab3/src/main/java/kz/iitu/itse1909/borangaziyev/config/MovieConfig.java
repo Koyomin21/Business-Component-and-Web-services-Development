@@ -17,7 +17,7 @@ public class MovieConfig {
     @Lazy
     @Bean(name = "movie", initMethod = "movieInit", destroyMethod = "movieDestroy")
     @Scope("prototype")
-    Movie movie() {
+    public Movie movie() {
         System.out.println("Lazy Movie Initialized with default parameters");
         Movie movie = new Movie();
         movie.setMovieId(Integer.parseInt(environment.getProperty("movie.id")));
@@ -32,7 +32,7 @@ public class MovieConfig {
     @DependsOn(value="movie")
     @Bean(initMethod = "initSession", destroyMethod = "destroySession")
     @Scope(value = "prototype")
-    MovieSession movieSession() {
+    public MovieSession movieSession() {
         MovieSession session = new MovieSession();
         session.setMovie(movie());
         return session;

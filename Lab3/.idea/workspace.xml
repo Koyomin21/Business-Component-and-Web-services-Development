@@ -4,9 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4eb6bdf-aa1a-44f6-9c06-d2f5c541673c" name="Changes" comment="Added AOP logger and CheckArguments aspects.">
+    <list default="true" id="f4eb6bdf-aa1a-44f6-9c06-d2f5c541673c" name="Changes" comment="Added @AfterReturning advice">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/kz/iitu/itse1909/borangaziyev/config/ConfigTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/kz/iitu/itse1909/borangaziyev/config/CustomerConfigTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/kz/iitu/itse1909/borangaziyev/config/MovieConfigTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/kz/iitu/itse1909/borangaziyev/database/BookingTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/kz/iitu/itse1909/borangaziyev/database/CustomerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/kz/iitu/itse1909/borangaziyev/database/HallTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/kz/iitu/itse1909/borangaziyev/database/MovieSessionTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/kz/iitu/itse1909/borangaziyev/database/MovieTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/kz/iitu/itse1909/borangaziyev/database/SeatTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/kz/iitu/itse1909/borangaziyev/service/BookingServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/kz/iitu/itse1909/borangaziyev/service/CustomerServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/kz/iitu/itse1909/borangaziyev/service/MovieServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../borangaziyev/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/aspects/CheckArgumentsAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/aspects/CheckArgumentsAspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/config/CustomerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/config/CustomerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/config/MovieConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/config/MovieConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +34,7 @@
         <option value="AnnotationType" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 &amp; Mockito" />
       </list>
     </option>
   </component>
@@ -41,15 +57,83 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/java/kz/iitu/itse1909/borangaziyev" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Anuar\IdeaProjects\Lab3\src\test\java\kz\iitu\itse1909\borangaziyev" />
+      <recent name="C:\Users\Anuar\IdeaProjects\Lab3\src\test\java\kz\iitu\itse1909\borangaziyev\database" />
+      <recent name="C:\Users\Anuar\IdeaProjects\Lab3\src\test\java\kz\iitu\itse1909\borangaziyev\config" />
+      <recent name="C:\Users\Anuar\IdeaProjects\Lab3\src\test\java" />
       <recent name="C:\Users\Anuar\IdeaProjects\Lab3\src\main\java\kz\iitu\itse1909\borangaziyev" />
-      <recent name="C:\Users\Anuar\IdeaProjects\Lab3\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.kz.iitu.itse1909.borangaziyev in Lab3">
+    <configuration name="All in Lab3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Lab3" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookingTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Lab3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kz.iitu.itse1909.borangaziyev.database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="kz.iitu.itse1909.borangaziyev.database" />
+      <option name="MAIN_CLASS_NAME" value="kz.iitu.itse1909.borangaziyev.database.BookingTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="kz.iitu.itse1909.borangaziyev in Lab3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Lab3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kz.iitu.itse1909.borangaziyev.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="kz.iitu.itse1909.borangaziyev" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="kz.iitu.itse1909.borangaziyev.database in Lab3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Lab3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kz.iitu.itse1909.borangaziyev.database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="kz.iitu.itse1909.borangaziyev.database" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="kz.iitu.itse1909.borangaziyev.service in Lab3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Lab3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="kz.iitu.itse1909.borangaziyev.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="kz.iitu.itse1909.borangaziyev.service" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Lab3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Lab3" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="kz.iitu.itse1909.borangaziyev.Lab3Application" />
@@ -57,6 +141,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.kz.iitu.itse1909.borangaziyev in Lab3" />
+        <item itemvalue="JUnit.All in Lab3" />
+        <item itemvalue="JUnit.kz.iitu.itse1909.borangaziyev.service in Lab3" />
+        <item itemvalue="JUnit.kz.iitu.itse1909.borangaziyev.database in Lab3" />
+        <item itemvalue="JUnit.BookingTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -69,7 +162,7 @@
       <workItem from="1644680800551" duration="836000" />
       <workItem from="1644724503863" duration="4262000" />
       <workItem from="1644754132474" duration="6295000" />
-      <workItem from="1644840764554" duration="841000" />
+      <workItem from="1644840764554" duration="1797000" />
     </task>
     <task id="LOCAL-00001" summary="Lab3. First Commit">
       <created>1644681032175</created>
@@ -85,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644761640745</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added @AfterReturning advice">
+      <created>1644847769300</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1644847769301</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,6 +206,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Lab3. First Commit" />
     <MESSAGE value="Added AOP logger and CheckArguments aspects." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added AOP logger and CheckArguments aspects." />
+    <MESSAGE value="Added @AfterReturning advice" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added @AfterReturning advice" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Lab3$All_in_Lab3.ic" NAME="All in Lab3 Coverage Results" MODIFIED="1644848503054" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

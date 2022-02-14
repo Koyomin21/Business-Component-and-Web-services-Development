@@ -1,10 +1,7 @@
 package kz.iitu.itse1909.borangaziyev.aspects;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -62,13 +59,22 @@ public class CheckArgumentsAspect {
     }
 
     @After("allAnnotatedMethods()")
-    public void checkNullResult(JoinPoint joinPoint){
+    public void loggingAfter(JoinPoint joinPoint){
         String targetClass = joinPoint.getTarget().getClass().getSimpleName();
         String targetMethod = joinPoint.getSignature().getName();
         String arg = joinPoint.getArgs()[0].toString();
 
         System.out.println(String.format("After Executing %s.%s with argument: %s",
                 targetClass, targetMethod, arg));
+
+    }
+
+    @AfterReturning(value = "movieServiceMethods() || bookingServiceMethods() || customerServiceMethods()", returning = "entity")
+    public void checkNullResult(JoinPoint joinPoint, Object entity) throws Throwable {
+        String targetMethod = joinPoint.getSignature().getName();
+        if(entity == null) {
+            System.out.println("The method: " + targetMethod + " returned null value!");
+        }
 
     }
 }

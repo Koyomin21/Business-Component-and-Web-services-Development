@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4eb6bdf-aa1a-44f6-9c06-d2f5c541673c" name="Changes" comment="Lab3. First Commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/aspects/CheckArguments.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/aspects/CheckArgumentsAspect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/aspects/ExecutionTimeLogger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/aspects/ExecutionTimeLoggerHandler.java" afterDir="false" />
+    <list default="true" id="f4eb6bdf-aa1a-44f6-9c06-d2f5c541673c" name="Changes" comment="Added AOP logger and CheckArguments aspects.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/service/BookingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/service/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/service/MovieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/service/MovieService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/aspects/CheckArgumentsAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kz/iitu/itse1909/borangaziyev/aspects/CheckArgumentsAspect.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +68,8 @@
       <updated>1644680798947</updated>
       <workItem from="1644680800551" duration="836000" />
       <workItem from="1644724503863" duration="4262000" />
-      <workItem from="1644754132474" duration="5905000" />
+      <workItem from="1644754132474" duration="6295000" />
+      <workItem from="1644840764554" duration="841000" />
     </task>
     <task id="LOCAL-00001" summary="Lab3. First Commit">
       <created>1644681032175</created>
@@ -83,7 +78,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644681032175</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added AOP logger and CheckArguments aspects.">
+      <created>1644761640745</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1644761640745</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -103,6 +105,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Lab3. First Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lab3. First Commit" />
+    <MESSAGE value="Added AOP logger and CheckArguments aspects." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added AOP logger and CheckArguments aspects." />
   </component>
 </project>

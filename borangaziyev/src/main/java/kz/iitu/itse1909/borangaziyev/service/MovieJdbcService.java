@@ -8,7 +8,9 @@ import kz.iitu.itse1909.borangaziyev.repository.MovieJdbcRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MovieJdbcService {
@@ -29,5 +31,23 @@ public class MovieJdbcService {
         }
 
         return movie;
+    }
+
+    public List<MovieModel> getMoviesSortedByPublishedYear(int year) {
+        // getting all movies
+        List<MovieModel> allMovies = repo.getAllMovies();
+
+        // sorting the list and returning
+        return allMovies.stream()
+                .sorted(Comparator.comparingInt(MovieModel::getPublishedYear))
+                .collect(Collectors.toList());
+    }
+
+    public int[] batchUpdateMoviePublishedYear(int year) {
+        return repo.batchUpdateMoviePublishedYear(year);
+    }
+
+    public int[]batchInsertNewMovies(List<MovieModel> movies) {
+        return repo.batchInsertNewMovies(movies);
     }
 }

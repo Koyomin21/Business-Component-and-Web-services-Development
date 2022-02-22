@@ -1,5 +1,6 @@
 package kz.iitu.itse1909.borangaziyev.repository;
 
+import kz.iitu.itse1909.borangaziyev.model.CustomerModel;
 import kz.iitu.itse1909.borangaziyev.model.MovieModel;
 import kz.iitu.itse1909.borangaziyev.model.MovieSessionModel;
 import kz.iitu.itse1909.borangaziyev.model.mappers.MovieModelMapper;
@@ -10,6 +11,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -34,6 +36,7 @@ public class MovieJdbcRepository {
     }
 
 
+
     public MovieModel getMovieById(long id) {
         String sql = "SELECT * FROM Movie WHERE movieId = :movieId";
         MovieModel movieModel = jdbcTemplate.queryForObject(
@@ -44,6 +47,52 @@ public class MovieJdbcRepository {
         return movieModel;
     }
 
+    public int[] batchUpdateMoviePublishedYear(int year) {
+        String sql = "UPDATE Movie SET publishedYear = :year WHERE movieId = :id";
 
+        List<MovieModel> movies = new ArrayList<>();
+        List<MapSqlParameterSource> params = new ArrayList<MapSqlParameterSource>();
+
+        for(MovieModel c: getAllMovies()) {
+            MapSqlParameterSource source = new MapSqlParameterSource();
+            source.addValue("year", year);
+            source.addValue("id", c.getMovieId());
+
+            params.add(source);
+        }
+
+        int []updateCounts = jdbcTemplate.batchUpdate(
+                sql,
+                params.toArray(MapSqlParameterSource[]::new)
+        );
+
+        return updateCounts;
+    }
+
+    public int[]batchInsertNewMovies(List<MovieModel> movies) {
+        String sql = "INSERT INTO Movie(title, minutes, publishedYear, description)" +
+                     "VALUES(:title, :minutes, :publishedYear, :description)";
+        List<MapSqlParameterSource> params = new ArrayList<MapSqlParameterSource>();
+
+        for(MovieModel movie:movies) {
+
+            MapSqlParameterSource source = new MapSqlParameterSource();
+            source.addValue("title", movie.getTitle());
+            source.addValue("minutes", movie.getMinutes());
+            source.addValue("publishedYear", movie.getPublishedYear());
+            source.addValue("description", movie.getDescription());
+
+            params.add(source);
+        }
+
+        int []insertCounts = jdbcTemplate.batchUpdate(
+                sql,
+                params.toArray(MapSqlParameterSource[]::new)
+        );
+
+        for(int i: insertCounts) System.out.println(i);
+
+        return insertCounts;
+    }
 
 }

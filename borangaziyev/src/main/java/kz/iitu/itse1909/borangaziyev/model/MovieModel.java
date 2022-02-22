@@ -17,4 +17,23 @@ public class MovieModel implements Serializable {
 
     private String description;
 
+    public  MovieModel() {}
+    public MovieModel(int minutes, int publishedYear, String title, String description) {
+        this.minutes = minutes;
+        this.publishedYear = publishedYear;
+        this.title = title;
+        this.description = description;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Movie: " +
+                "ID: " + this.movieId + "\n" +
+                "Title: " + this.title + "\n" +
+                "Minutes: " + this.minutes + "\n" +
+                "Published Year: " + this.publishedYear + "\n" +
+                "Description: " + this.description + "\n";
+
+    }
 }

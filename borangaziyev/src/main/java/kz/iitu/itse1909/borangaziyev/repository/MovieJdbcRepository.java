@@ -92,6 +92,7 @@ public class MovieJdbcRepository {
 
         for(int i: insertCounts) System.out.println(i);
 
+
         return insertCounts;
     }
 

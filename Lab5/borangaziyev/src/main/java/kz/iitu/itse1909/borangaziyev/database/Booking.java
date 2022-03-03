@@ -46,7 +46,7 @@ public class Booking implements Serializable {
         return "Booking: " +
                 "ID: " + this.bookingId + " " +
                 "Customer: " + this.customer.getFirstName() + " " + this.customer.getLastName()+" " +
-                "Session: " + this.session.getStartTime() + " " + this.session.getEndTime() +
+                "Session: " + this.session.getStartTime() + " " + this.session.getEndTime() + " " +
                 "Seat: Row: " + this.seat.getRow() + ", Number: " + this.seat.getNumber() + " " +
                 "Is Paid: " + this.isPaid;
     }

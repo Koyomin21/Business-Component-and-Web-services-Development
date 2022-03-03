@@ -4,9 +4,7 @@ import kz.iitu.itse1909.borangaziyev.aspects.ExecutionTimeLogger;
 import kz.iitu.itse1909.borangaziyev.database.Booking;
 import kz.iitu.itse1909.borangaziyev.database.Customer;
 import kz.iitu.itse1909.borangaziyev.database.MovieSession;
-import kz.iitu.itse1909.borangaziyev.repository.BookingRepository;
-import kz.iitu.itse1909.borangaziyev.repository.CustomerRepository;
-import kz.iitu.itse1909.borangaziyev.repository.MovieSessionRepository;
+import kz.iitu.itse1909.borangaziyev.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +16,9 @@ import java.util.stream.Collectors;
 public class BookingService {
 
     @Autowired
-    private BookingRepository bookingRepository;
+    private BookingRepo bookingRepository;
     @Autowired
-    private CustomerRepository customerRepository;
+    private CustomerRepo customerRepository;
     @Autowired
     private MovieSessionRepository sessionRepository;
 
@@ -36,7 +34,7 @@ public class BookingService {
 
     public List<Booking> getPaidBookingsByCustomerId(long id) {
         // getting customer
-        Customer customer = customerRepository.findById(id).get();
+        Customer customer = customerRepository.findById(id);
         if(customer != null && !customer.getBookings().isEmpty()) {
             // getting bookings of a customer
             List<Booking> allCustomerBookings = customer.getBookings();

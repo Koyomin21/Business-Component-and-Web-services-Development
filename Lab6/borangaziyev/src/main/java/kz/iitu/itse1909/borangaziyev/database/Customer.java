@@ -7,6 +7,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+@NamedQuery(
+        name = "Customer.findAllNotVipCustomers",
+        query = "select c from Customer c where c.isVip = false"
+)
 @Data
 @Entity
 @Table(name = "Customer")

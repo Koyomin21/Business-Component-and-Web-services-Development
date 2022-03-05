@@ -6,6 +6,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+@NamedQuery(
+        name = "Hall.findFirstTenHalls",
+        query = "select h from Hall h"
+)
 @Data
 @Entity
 @Table(name = "Hall")

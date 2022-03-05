@@ -82,6 +82,12 @@ public class MovieService {
         return sessionRepository.findById(id).get();
     }
 
+    public List<Movie> getMoviesWithDescription(String description) {
+        return movieRepository.findMoviesByDescriptionContaining(description);
+    }
 
+    public List<MovieSession> getSessionsByPriceRange(int startPrice, int endPrice) {
+        return sessionRepository.findAllByPriceBetween(startPrice, endPrice);
+    }
 
 }

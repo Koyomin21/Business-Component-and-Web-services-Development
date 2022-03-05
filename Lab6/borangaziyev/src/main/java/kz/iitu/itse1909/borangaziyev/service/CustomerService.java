@@ -62,4 +62,13 @@ public class CustomerService {
         return new ArrayList<Customer>();
     }
 
+    public Customer getCustomerByFullName(String firstName, String lastName) {
+        return customerRepository.getCustomerByFirstNameAndLastName(firstName, lastName);
+    }
+
+    public Customer getCustomerWithName(String name) {
+        return customerRepository.getCustomersByFirstNameOrLastName(name);
+    }
+
+
 }

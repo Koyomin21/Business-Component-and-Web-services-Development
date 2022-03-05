@@ -11,6 +11,10 @@ import java.time.LocalTime;
 import java.util.List;
 
 
+@NamedQuery(
+        name = "Session.findAllByMovieTitle",
+        query = "select s from MovieSession s where s.movie.title = :title"
+)
 @Data
 @Entity
 @Table(name = "MovieSession")

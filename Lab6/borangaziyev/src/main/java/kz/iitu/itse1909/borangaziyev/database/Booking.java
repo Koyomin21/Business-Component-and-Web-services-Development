@@ -6,6 +6,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+
+@NamedQuery(
+        name = "Booking.findPaidBookings",
+        query = "select b from Booking b where b.isPaid = true"
+)
 @Data
 @Entity
 @Table(name = "Booking")

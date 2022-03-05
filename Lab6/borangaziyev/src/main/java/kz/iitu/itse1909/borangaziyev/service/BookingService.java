@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -66,5 +67,12 @@ public class BookingService {
         return sessionBookings;
     }
 
+    public List<Booking> getBookingsAfterDate(LocalDate afterDate) {
+        return bookingRepository.getBookingsByBookingDateAfter(afterDate);
+    }
+
+    public List<Booking> getBookingsBeforeDate(LocalDate beforeDate) {
+        return bookingRepository.getBookingsByBookingDateBefore(beforeDate);
+    }
 
 }

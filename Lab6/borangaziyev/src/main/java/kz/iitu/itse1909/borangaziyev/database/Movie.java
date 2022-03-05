@@ -8,6 +8,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+@NamedQuery(
+        name = "Movie.findMoviesWithNoDescription",
+        query = "select m from Movie m where m.description is null or m.description is not empty"
+)
 @Data
 @Entity
 public class Movie implements Serializable {

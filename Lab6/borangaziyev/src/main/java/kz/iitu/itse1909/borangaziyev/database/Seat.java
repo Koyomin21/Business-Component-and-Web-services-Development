@@ -7,6 +7,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+@NamedQuery(
+        name = "Seat.findAllByHallName",
+        query = "select s from Seat s where s.hall.name = :hallName"
+)
 @Data
 @Entity
 @Table(name = "Seat")

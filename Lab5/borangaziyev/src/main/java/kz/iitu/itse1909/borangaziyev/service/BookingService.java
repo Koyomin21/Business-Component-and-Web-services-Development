@@ -6,6 +6,7 @@ import kz.iitu.itse1909.borangaziyev.database.Customer;
 import kz.iitu.itse1909.borangaziyev.database.MovieSession;
 import kz.iitu.itse1909.borangaziyev.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,18 +21,20 @@ public class BookingService {
     @Autowired
     private CustomerRepo customerRepository;
     @Autowired
-    private MovieSessionRepository sessionRepository;
+    private MovieRepo sessionRepository;
 
     public BookingService() {
         System.out.println("Booking Service was born!");
     }
 
     @ExecutionTimeLogger
+    @Cacheable(value = "bookings")
     public List<Booking> getAllBookings() {
         return (List<Booking>) bookingRepository.findAll();
     }
 
 
+    @Cacheable(value = "bookings")
     public List<Booking> getPaidBookingsByCustomerId(long id) {
         // getting customer
         Customer customer = customerRepository.findById(id);
@@ -47,10 +50,11 @@ public class BookingService {
         return new ArrayList<Booking>();
     }
 
+    @Cacheable(value = "bookings")
     public List<Booking> getBookingsByMovieSessionId(long id) {
         // getting seat first
         List<Booking> sessionBookings = new ArrayList<Booking>();
-        MovieSession movieSession = sessionRepository.findById(id).get();
+        MovieSession movieSession = sessionRepository.getSessionById(id);
 
         if(movieSession != null && !movieSession.getBookings().isEmpty()) {
             // getting bookings from a Movie Session

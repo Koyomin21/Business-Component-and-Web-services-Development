@@ -1,9 +1,9 @@
 package kz.iitu.itse1909.borangaziyev.service;
 
+import kz.iitu.itse1909.borangaziyev.database.Hall;
 import kz.iitu.itse1909.borangaziyev.database.Movie;
 import kz.iitu.itse1909.borangaziyev.database.MovieSession;
-import kz.iitu.itse1909.borangaziyev.repository.MovieRepository;
-import kz.iitu.itse1909.borangaziyev.repository.MovieSessionRepository;
+import kz.iitu.itse1909.borangaziyev.repository.MovieRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,17 +11,18 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Month;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
-import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class MovieServiceTest {
     @Mock
-    MovieRepository movieRepository;
-    @Mock
-    MovieSessionRepository sessionRepository;
+    MovieRepo movieRepository;
     @InjectMocks
     MovieService movieService;
 
@@ -33,33 +34,45 @@ class MovieServiceTest {
     @Test
     void testGetAllMovies() {
         when(movieRepository.findAll()).thenReturn(Arrays.<Movie>asList(new Movie("title", 0, 0, "description")));
+
         List<Movie> result = movieService.getAllMovies();
         Assertions.assertEquals(Arrays.<Movie>asList(new Movie("title", 0, 0, "description")), result);
     }
 
     @Test
     void testGetMoviesSortedByPublishedYear() {
-        List<Movie>allMovies = Arrays.asList(
-                new Movie("titl1", 0, 2, "Description1"),
-                new Movie("titl2", 5, 3, "Description2")
-        );
-        when(movieRepository.findAll()).thenReturn(allMovies);
+        when(movieRepository.findAll()).thenReturn(Arrays.<Movie>asList(new Movie(null, 0, 0, null)));
 
         List<Movie> result = movieService.getMoviesSortedByPublishedYear();
-        Assertions.assertEquals("[Movie: ID: 0 Title: titl1 Minutes: 0 Published Year: 2 Description: Description1, Movie: ID: 0 Title: titl2 Minutes: 5 Published Year: 3 Description: Description2]", result.toString());
+        Assertions.assertEquals(Arrays.<Movie>asList(new Movie(null, 0, 0, null)), result);
     }
 
     @Test
     void testGetMovieBySessionId() {
-
-        MovieSession session = new MovieSession();
-        Movie movie = new Movie("title", 0, 0, "description");
-        session.setMovie(movie);
-
-        when(sessionRepository.findById(any())).thenReturn(java.util.Optional.of(session));
+        when(movieRepository.getSessionById(anyLong())).thenReturn(new MovieSession(new Hall(), 0, LocalDate.of(2022, Month.MARCH, 5), LocalTime.of(8, 49, 24), LocalTime.of(8, 49, 24)));
 
         Movie result = movieService.getMovieBySessionId(0L);
         Assertions.assertEquals(new Movie("title", 0, 0, "description"), result);
+    }
+
+    @Test
+    void testAddNewMovies() {
+        movieService.addNewMovies(Arrays.<Movie>asList(new Movie("title", 0, 0, "description")));
+    }
+
+    @Test
+    void testUpdateMovieSessionDates() {
+        movieService.updateMovieSessionDates(new HashMap<MovieSession, LocalDate>() {{
+            put(new MovieSession(new Hall(), 0, LocalDate.of(2022, Month.MARCH, 5), LocalTime.of(8, 49, 24), LocalTime.of(8, 49, 24)), LocalDate.of(2022, Month.MARCH, 5));
+        }});
+    }
+
+    @Test
+    void testGetSessionById() {
+        when(movieRepository.getSessionById(anyLong())).thenReturn(new MovieSession(new Hall(), 0, LocalDate.of(2022, Month.MARCH, 5), LocalTime.of(8, 49, 24), LocalTime.of(8, 49, 24)));
+
+        MovieSession result = movieService.getSessionById(0L);
+        Assertions.assertEquals(new MovieSession(new Hall(), 0, LocalDate.of(2022, Month.MARCH, 5), LocalTime.of(8, 49, 24), LocalTime.of(8, 49, 24)), result);
     }
 }
 

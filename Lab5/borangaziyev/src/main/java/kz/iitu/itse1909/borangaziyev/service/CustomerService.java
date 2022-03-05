@@ -5,6 +5,7 @@ import kz.iitu.itse1909.borangaziyev.database.Booking;
 import kz.iitu.itse1909.borangaziyev.database.Customer;
 import kz.iitu.itse1909.borangaziyev.database.MovieSession;
 import kz.iitu.itse1909.borangaziyev.repository.CustomerRepository;
+import kz.iitu.itse1909.borangaziyev.repository.MovieRepo;
 import kz.iitu.itse1909.borangaziyev.repository.MovieSessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,13 +18,13 @@ import java.util.stream.Collectors;
 public class CustomerService {
 
     private CustomerRepository customerRepository;
-    private MovieSessionRepository sessionRepository;
+    private MovieRepo movieRepo;
 
 
     @Autowired
-    public CustomerService(CustomerRepository customerRepository, MovieSessionRepository sessionRepository) {
+    public CustomerService(CustomerRepository customerRepository, MovieRepo movieRepo) {
         this.customerRepository = customerRepository;
-        this.sessionRepository = sessionRepository;
+        this.movieRepo = movieRepo;
     }
 
     @ExecutionTimeLogger
@@ -33,7 +34,7 @@ public class CustomerService {
 
     public List<Customer> getAllCustomersFromSession(long sessionId) {
         // get session
-        MovieSession session = sessionRepository.findById(sessionId).get();
+        MovieSession session = movieRepo.getSessionById(sessionId);
 
         if(session != null && !session.getBookings().isEmpty()) {
             List<Booking> sessionBookings = session.getBookings();
@@ -47,7 +48,7 @@ public class CustomerService {
 
     public List<Customer> getVipCustomersFromSession(long sessionId) {
         // get session
-        MovieSession session = sessionRepository.findById(sessionId).get();
+        MovieSession session = movieRepo.getSessionById(sessionId);
 
         if(session != null && !session.getBookings().isEmpty()) {
             // getting bookings

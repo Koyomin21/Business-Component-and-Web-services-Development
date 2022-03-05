@@ -34,6 +34,10 @@ public class Customer implements Serializable {
     @Column(name = "isVip")
     private boolean isVip;
 
+    @Lob
+    @Column(name = "avatar", columnDefinition = "BYTEA", nullable = true)
+    private byte[]photo;
+
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer")
     @OrderBy("bookingDate ASC, isPaid")
     private List<Booking> bookings;

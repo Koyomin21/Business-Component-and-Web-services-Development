@@ -29,10 +29,6 @@ public class Movie implements Serializable {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @Lob
-    @Column(name = "poster", columnDefinition = "BYTEA")
-    private byte[]photo;
-
     @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "movie")
     private List<MovieSession> sessions;

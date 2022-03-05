@@ -5,6 +5,7 @@ import kz.iitu.itse1909.borangaziyev.database.Customer;
 import kz.iitu.itse1909.borangaziyev.database.MovieSession;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

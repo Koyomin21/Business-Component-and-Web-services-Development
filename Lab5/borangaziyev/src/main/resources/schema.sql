@@ -27,8 +27,7 @@ CREATE TABLE Movie (
     title varchar(255),
     description text,
     minutes int,
-    publishedYear int,
-    poster bytea
+    publishedYear int
 );
 
 CREATE TABLE Customer (
@@ -37,7 +36,8 @@ CREATE TABLE Customer (
     lastName varchar(255),
     email varchar(255),
     isVip boolean,
-    version int default 0
+    version int default 0,
+    avatar bytea
 );
 
 CREATE TABLE MovieSession (

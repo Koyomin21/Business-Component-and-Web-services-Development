@@ -30,7 +30,7 @@ class CustomerConfigTest {
     @Test
     void testBooking() {
         Booking result = customerConfig.booking();
-        Assertions.assertEquals("Booking: ID: 0 Customer: null null Session: null nullSeat: Row: 0, Number: 0 Is Paid: false", result.toString());
+        Assertions.assertEquals("Booking: ID: 0 Customer: null null Session: null null Seat: Row: 0, Number: 0 Is Paid: false", result.toString());
     }
 }
 

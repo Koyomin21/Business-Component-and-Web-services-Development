@@ -39,7 +39,7 @@ class BookingTest {
         when(seat.getNumber()).thenReturn(0);
 
         String result = booking.toString();
-        Assertions.assertEquals("Booking: ID: 0 Customer: getFirstNameResponse getLastNameResponse Session: 13:55:56 13:55:56Seat: Row: 0, Number: 0 Is Paid: false", result);
+        Assertions.assertEquals("Booking: ID: 0 Customer: getFirstNameResponse getLastNameResponse Session: 13:55:56 13:55:56 Seat: Row: 0, Number: 0 Is Paid: false", result);
     }
 
     @Test

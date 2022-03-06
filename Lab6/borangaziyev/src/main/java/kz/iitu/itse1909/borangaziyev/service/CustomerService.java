@@ -67,7 +67,15 @@ public class CustomerService {
     }
 
     public Customer getCustomerWithName(String name) {
-        return customerRepository.getCustomersByFirstNameOrLastName(name);
+        return customerRepository.findCustomersByLastNameContaining(name);
+    }
+
+    public List<Customer> findAllNotVipCustomers() {
+        return customerRepository.findAllNotVipCustomers();
+    }
+
+    public List<Customer> findCustomersWithNameContaining(String name) {
+        return customerRepository.findAllByFirstNameorLastNameContaining(name);
     }
 
 

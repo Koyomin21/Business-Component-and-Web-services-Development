@@ -1,6 +1,8 @@
 package kz.iitu.itse1909.borangaziyev.database;
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,6 +21,7 @@ public class Booking implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long bookingId;
 
+    @CreatedBy
     @ManyToOne
     @JoinColumn(name = "customerId", referencedColumnName = "customerId")
     private Customer customer;
@@ -31,6 +34,7 @@ public class Booking implements Serializable {
     @JoinColumn(name = "seatId")
     private Seat seat;
 
+    @CreatedDate
     @Column(name = "bookingDate")
     private LocalDate bookingDate;
 

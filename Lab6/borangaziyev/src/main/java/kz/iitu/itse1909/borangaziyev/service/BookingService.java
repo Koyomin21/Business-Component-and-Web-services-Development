@@ -75,4 +75,8 @@ public class BookingService {
         return bookingRepository.getBookingsByBookingDateBefore(beforeDate);
     }
 
+    public List<Booking> getPaidBookings() {
+        return bookingRepository.findPaidBookings();
+    }
+
 }

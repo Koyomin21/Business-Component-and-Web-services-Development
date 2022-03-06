@@ -90,4 +90,16 @@ public class MovieService {
         return sessionRepository.findAllByPriceBetween(startPrice, endPrice);
     }
 
+    public List<Movie> findMoviesWithNoDescription() {
+        return movieRepository.findMoviesWithNoDescription();
+    }
+
+    public List<MovieSession> findAllSessionsByMovieTitle(String title) {
+        return sessionRepository.findAllByMovieTitle(title);
+    }
+
+    public List<MovieSession> getMovieSessionsBySessionDateBetween(LocalDate startDate, LocalDate endDate) {
+        return sessionRepository.getMovieSessionsBySessionDateBetween(startDate, endDate);
+    }
+
 }

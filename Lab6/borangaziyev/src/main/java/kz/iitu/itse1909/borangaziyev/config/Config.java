@@ -1,6 +1,7 @@
 package kz.iitu.itse1909.borangaziyev.config;
 
 import kz.iitu.itse1909.borangaziyev.database.*;
+import kz.iitu.itse1909.borangaziyev.repository.BookingRepository;
 import kz.iitu.itse1909.borangaziyev.service.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -54,7 +55,7 @@ public class Config {
         System.out.println(customerService.getVipCustomersFromSession(1));
         // Get Movie By Session ID
         System.out.println(movieService.getMovieBySessionId(3));
-
+        // Batch insert new Movies
         List<Movie> movies = Arrays.asList(
                 new Movie("Title1", 1, 1923, "Description1"),
                 new Movie("Title2", 2, 1823, "Description2"),
@@ -66,16 +67,38 @@ public class Config {
 
         movieService.addNewMovies(movies);
         System.out.println(movieService.getAllMovies());
-
+        // Update Movie Sessions
         movieService.updateMovieSessions(movieService.getAllSessions().stream()
                 .map(s -> {
-                    s.setSessionDate(LocalDate.of(2021, 4, 12));
+                    if(s.getSessionDate().getYear() < 2015)
+                        s.setSessionDate(LocalDate.of(2021, 4, 12));
                     return s;
                 })
                 .collect(Collectors.toList())
         );
         System.out.println(movieService.getAllSessions());
+        // NamedQueries
+        // Booking
+        System.out.println(bookingService.getPaidBookings());
+        // Customer
+        System.out.println(customerService.findAllNotVipCustomers());
+        // Movie
+        System.out.println(movieService.findMoviesWithNoDescription());
+        // MovieSession
+        System.out.println(movieService.findAllSessionsByMovieTitle("Edge of Tomorrow"));
 //        System.out.println(movieService.getSessionById(5)+ "\n" + movieService.getSessionById(2));
+
+        // @Query
+        System.out.println(customerService.findCustomersWithNameContaining("ya"));
+        System.out.println(movieService.getMovieSessionsBySessionDateBetween(
+                LocalDate.of(2020, 3, 10),
+                LocalDate.of(2021, 4, 13)
+                )
+        );
+
+
+
+
 
 
     }

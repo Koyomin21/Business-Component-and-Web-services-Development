@@ -2,6 +2,8 @@ package kz.iitu.itse1909.borangaziyev.database;
 
 import lombok.Data;
 import org.springframework.core.annotation.Order;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -32,9 +34,11 @@ public class Customer implements Serializable {
     @Version
     private int version;
 
+    @LastModifiedDate
     @Column(name = "email")
     private String email;
 
+    @LastModifiedBy
     @Column(name = "isVip")
     private boolean isVip;
 

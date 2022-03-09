@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Configuration
-@Import({MovieConfig.class, CustomerConfig.class})
+@Import({MovieConfig.class, CustomerConfig.class, CacheConfig.class})
 public class Config {
 
     @Bean
@@ -39,10 +39,16 @@ public class Config {
         CustomerService customerService = context.getBean(CustomerService.class);
         BookingService bookingService = context.getBean(BookingService.class);
 
+        System.out.println("__________________________________________________________________________");
 
         System.out.println("Movies: " + movieService.getAllMovies());
         System.out.println("Customers: " + customerService.getAllCustomers());
         System.out.println("Bookings: " + bookingService.getAllBookings());
+//        System.out.println("__________________________________________________________________________");
+//        System.out.println("Movies: " + movieService.getAllMovies());
+//        System.out.println("Customers: " + customerService.getAllCustomers());
+//        System.out.println("Bookings: " + bookingService.getAllBookings());
+//        System.out.println("__________________________________________________________________________");
         // All Customers from session
         System.out.println(customerService.getAllCustomersFromSession(1));
         // Get Bookings of a Customer that are paid
@@ -95,11 +101,6 @@ public class Config {
                 LocalDate.of(2021, 4, 13)
                 )
         );
-
-
-
-
-
 
     }
 

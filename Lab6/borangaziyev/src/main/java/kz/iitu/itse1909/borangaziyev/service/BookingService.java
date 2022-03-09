@@ -34,7 +34,7 @@ public class BookingService {
         return (List<Booking>) bookingRepository.findAll();
     }
 
-
+    @ExecutionTimeLogger
     @Cacheable(value = "bookings")
     public List<Booking> getPaidBookingsByCustomerId(long id) {
         // getting customer

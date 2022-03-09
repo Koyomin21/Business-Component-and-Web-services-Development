@@ -7,6 +7,7 @@ import kz.iitu.itse1909.borangaziyev.database.MovieSession;
 import kz.iitu.itse1909.borangaziyev.repository.CustomerRepository;
 import kz.iitu.itse1909.borangaziyev.repository.MovieSessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class CustomerService {
     }
 
     @ExecutionTimeLogger
+    @Cacheable("customers")
     public List<Customer> getAllCustomers() {
         return (List<Customer>) customerRepository.findAll();
     }
@@ -37,7 +39,9 @@ public class CustomerService {
 
         if(session != null && !session.getBookings().isEmpty()) {
             List<Booking> sessionBookings = session.getBookings();
-            List<Customer> customers = sessionBookings.stream().map(s -> s.getCustomer()).collect(Collectors.toList());
+            List<Customer> customers = sessionBookings.stream()
+                    .map(s -> s.getCustomer())
+                    .collect(Collectors.toList());
 
             return customers;
         }

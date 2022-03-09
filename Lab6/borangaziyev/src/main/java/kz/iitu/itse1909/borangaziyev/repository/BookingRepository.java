@@ -25,4 +25,5 @@ public interface BookingRepository extends CrudRepository<Booking, Long> {
     @Transactional
     List<Booking> findPaidBookings();
 
+
 }

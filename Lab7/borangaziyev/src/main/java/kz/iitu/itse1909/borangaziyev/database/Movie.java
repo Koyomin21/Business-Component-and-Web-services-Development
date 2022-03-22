@@ -5,10 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -31,6 +28,7 @@ public class Movie implements Serializable {
     @Column(name = "publishedYear")
     private int publishedYear;
 
+    @NotNull(message = "TITLE SHOULD NOT BE NULL!")
     @Column(name = "title")
     private String title;
 

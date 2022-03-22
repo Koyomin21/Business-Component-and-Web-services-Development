@@ -11,6 +11,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -69,6 +70,7 @@ public class MovieService {
         return movie;
     }
 
+    @Transactional(isolation = Isolation.SERIALIZABLE, propagation = Propagation.REQUIRES_NEW)
     @CacheEvict(value = "movies", allEntries = true)
     public void addNewMovies(List<Movie> movies) {
         movieRepository.saveAll(movies);
@@ -76,6 +78,7 @@ public class MovieService {
 
 
     @CachePut(value = "movies")
+    @Transactional(isolation = Isolation.SERIALIZABLE, propagation = Propagation.REQUIRES_NEW)
     public void updateMovieSessions(List<MovieSession> sessions) {
         sessionRepository.saveAll(sessions);
     }
@@ -95,6 +98,7 @@ public class MovieService {
         return sessionRepository.findAllByPriceBetween(startPrice, endPrice);
     }
 
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public List<Movie> findMoviesWithNoDescription() {
         return movieRepository.findMoviesWithNoDescription();
     }

@@ -3,23 +3,30 @@ package kz.iitu.itse1909.borangaziyev.config;
 import kz.iitu.itse1909.borangaziyev.database.*;
 import kz.iitu.itse1909.borangaziyev.repository.BookingRepository;
 import kz.iitu.itse1909.borangaziyev.service.*;
+import kz.iitu.itse1909.borangaziyev.validators.converters.StringToHallConverter;
 import kz.iitu.itse1909.borangaziyev.validators.formatters.FormatterServiceBeanFactory;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.support.ConversionServiceFactoryBean;
+import org.springframework.core.convert.ConversionService;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.core.convert.support.ConversionServiceFactory;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.ValidatorFactory;
 import java.lang.reflect.Array;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Configuration
+@Log
 @Import({MovieConfig.class, CustomerConfig.class, CacheConfig.class})
 public class Config {
 
@@ -35,6 +42,20 @@ public class Config {
     @Bean
     public Hall hall() {
         return new Hall();
+    }
+
+    @Bean
+    public ConversionServiceFactoryBean conversionService() {
+        ConversionServiceFactoryBean conversionServiceFactoryBean =
+                new ConversionServiceFactoryBean();
+        Set<Converter> convs = new HashSet<>();
+        convs.add(new StringToHallConverter());
+
+        conversionServiceFactoryBean.setConverters(convs);
+        conversionServiceFactoryBean.afterPropertiesSet();
+
+        return conversionServiceFactoryBean;
+
     }
 
 
@@ -107,8 +128,39 @@ public class Config {
                 )
         );
 
+        // Validation
         Movie movie = new Movie();
+        Seat seat = new Seat();
         System.out.println(movie.isMovieWithDescription());
+
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+
+        // Movie violations
+        Set<ConstraintViolation<Movie>> movieViolations = factory.getValidator().validate(movie);
+        for (ConstraintViolation<Movie> violation : movieViolations) {
+            log.info(violation.getMessage());
+        }
+        // Seat Violations
+        Set<ConstraintViolation<Seat>> seatViolations = factory.getValidator().validate(seat);
+        for (ConstraintViolation<Seat> violation : seatViolations) {
+            log.info(violation.getMessage());
+        }
+
+        // Custom Formating
+        FormatterServiceBeanFactory formatterServiceBeanFactory = new FormatterServiceBeanFactory();
+
+        try {
+            formatterServiceBeanFactory.getDateTimeFormatter().parse("23-11-2001", Locale.ENGLISH);
+        } catch (Exception e) {
+            System.out.println("Second has error in formatting!");
+        }
+
+        // Custom Conversion
+        ConversionService conversionService = conversionService().getObject();
+        String hallString = "1,Blue Hall,77";
+        System.out.println("Converted hall from string: ");
+        Hall hall = conversionService.convert(hallString, Hall.class);
+        System.out.println(hall);
 
     }
 

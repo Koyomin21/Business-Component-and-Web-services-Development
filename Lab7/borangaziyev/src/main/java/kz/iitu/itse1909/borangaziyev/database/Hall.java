@@ -34,9 +34,6 @@ public class Hall implements Serializable {
     @OneToMany(mappedBy = "hall")
     private List<Seat> seats;
 
-    @Override
-    public String toString() {
-        return hallId + "," + name + "," + capacity;
-    }
+
 
 }

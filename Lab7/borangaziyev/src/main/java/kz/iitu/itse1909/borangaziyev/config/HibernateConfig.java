@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.orm.jpa.DefaultJpaDialect;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -50,6 +51,7 @@ public class HibernateConfig {
         properties.put("hibernate.order_inserts", "true");
         properties.put("hibernate.order_updates", "true");
         properties.put("hibernate.batch_versioned_data", "true");
+
         properties.setProperty("hibernate.connection.isolation", String.valueOf(Connection.TRANSACTION_SERIALIZABLE));
 
 
@@ -64,6 +66,7 @@ public class HibernateConfig {
         transactionManager.setEntityManagerFactory(
                 sessionFactory().getObject());
         transactionManager.setJpaDialect(new HibernateJpaDialect());
+        transactionManager.setJpaProperties(hibernateProperties());
 
 
         return transactionManager;

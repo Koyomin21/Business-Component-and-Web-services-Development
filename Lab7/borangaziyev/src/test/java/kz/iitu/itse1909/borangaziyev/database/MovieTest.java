@@ -7,11 +7,15 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import javax.validation.constraints.AssertFalse;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Month;
 import java.util.Arrays;
 import java.util.List;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class MovieTest {
     @Mock
@@ -87,6 +91,25 @@ class MovieTest {
         int result = movie.hashCode();
         Movie movie2 = movie;
         Assertions.assertEquals(movie2.hashCode(), result);
+    }
+
+    @Test
+    void isMovieWithDescription() {
+        Movie movie = mock(Movie.class);
+        movie.setDescription("");
+
+        when(movie.isMovieWithDescription()).thenReturn(false);
+        Boolean result = movie.isMovieWithDescription();
+
+        movie.setDescription("asas");
+        when(movie.isMovieWithDescription()).thenReturn(true);
+
+
+        Boolean result2 = movie.isMovieWithDescription();
+
+        Assertions.assertFalse(result);
+        Assertions.assertTrue(result2);
+
     }
 }
 

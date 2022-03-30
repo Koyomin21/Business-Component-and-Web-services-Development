@@ -8,6 +8,8 @@ import kz.iitu.itse1909.borangaziyev.repository.CustomerRepository;
 import kz.iitu.itse1909.borangaziyev.repository.MovieSessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -76,7 +78,10 @@ public class CustomerService {
         return customerRepository.findCustomersByLastNameContaining(name);
     }
 
+    @Async
+    @Scheduled(cron = "${cron.expression}")
     public List<Customer> findAllNotVipCustomers() {
+        System.out.println("Started parallel method findAllNotVip");
         return customerRepository.findAllNotVipCustomers();
     }
 

@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -38,12 +40,14 @@ public class MovieService {
 
     @ExecutionTimeLogger
     @Cacheable(value = "movies")
+    @Scheduled(initialDelay = 1000, fixedDelay = 10000)
     public List<Movie> getAllMovies() {
         return (List<Movie>) movieRepository.findAll();
     }
 
     public List<MovieSession> getAllSessions() { return (List<MovieSession>) sessionRepository.findAll();}
 
+    @Scheduled(fixedRateString = "${fixedRate.in.milliseconds}")
     @Cacheable(value = "movies")
     public List<Movie> getMoviesSortedByPublishedYear() {
         // getting movies from repository
@@ -98,6 +102,7 @@ public class MovieService {
         return sessionRepository.findAllByPriceBetween(startPrice, endPrice);
     }
 
+    @Scheduled(fixedRate = 1200)
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public List<Movie> findMoviesWithNoDescription() {
         return movieRepository.findMoviesWithNoDescription();

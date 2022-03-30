@@ -16,6 +16,8 @@ import org.springframework.context.support.ConversionServiceFactoryBean;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.support.ConversionServiceFactory;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -27,6 +29,8 @@ import java.util.stream.Collectors;
 
 @Configuration
 @Log
+@EnableScheduling
+@EnableAsync
 @Import({MovieConfig.class, CustomerConfig.class, CacheConfig.class})
 public class Config {
 
@@ -162,7 +166,14 @@ public class Config {
         Hall hall = conversionService.convert(hallString, Hall.class);
         System.out.println(hall);
 
+        // Run in Parallel
+        for(int i = 0; i < 3;i++)
+        {
+            customerService.findAllNotVipCustomers();
+        }
+
     }
+
 
 
 

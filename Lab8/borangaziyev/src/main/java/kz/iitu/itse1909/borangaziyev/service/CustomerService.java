@@ -80,8 +80,10 @@ public class CustomerService {
 
     @Async
     @Scheduled(cron = "${cron.expression}")
-    public List<Customer> findAllNotVipCustomers() {
+    public List<Customer> findAllNotVipCustomers() throws InterruptedException {
         System.out.println("Started parallel method findAllNotVip");
+        Thread.sleep(3000);
+        System.out.println("Ended parallel method");
         return customerRepository.findAllNotVipCustomers();
     }
 

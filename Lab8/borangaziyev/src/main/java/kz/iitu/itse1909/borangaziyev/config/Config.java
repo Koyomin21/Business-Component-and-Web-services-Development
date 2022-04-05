@@ -16,8 +16,10 @@ import org.springframework.context.support.ConversionServiceFactoryBean;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.support.ConversionServiceFactory;
+import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -60,6 +62,14 @@ public class Config {
 
         return conversionServiceFactoryBean;
 
+    }
+
+    @Bean
+    public TaskScheduler taskScheduler() {
+        ThreadPoolTaskScheduler threadPoolTaskScheduler = new ThreadPoolTaskScheduler();
+        threadPoolTaskScheduler.setPoolSize(5);
+        threadPoolTaskScheduler.setThreadNamePrefix("ThreadPoolTaskScheduler");
+        return threadPoolTaskScheduler;
     }
 
 
@@ -117,7 +127,7 @@ public class Config {
         // Booking
         System.out.println(bookingService.getPaidBookings());
         // Customer
-        System.out.println(customerService.findAllNotVipCustomers());
+//        System.out.println(customerService.findAllNotVipCustomers());
         // Movie
         System.out.println(movieService.findMoviesWithNoDescription());
         // MovieSession
@@ -169,7 +179,11 @@ public class Config {
         // Run in Parallel
         for(int i = 0; i < 3;i++)
         {
-            customerService.findAllNotVipCustomers();
+            try {
+                customerService.findAllNotVipCustomers();
+            } catch (Exception e) {
+            }
+
         }
 
     }

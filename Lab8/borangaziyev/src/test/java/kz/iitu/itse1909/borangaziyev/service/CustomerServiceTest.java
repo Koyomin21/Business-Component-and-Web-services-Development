@@ -100,7 +100,7 @@ class CustomerServiceTest {
     }
 
     @Test
-    void testFindAllNotVipCustomers() {
+    void testFindAllNotVipCustomers() throws InterruptedException {
         when(customerRepository.findAllNotVipCustomers()).thenReturn(Arrays.<Customer>asList(new Customer()));
 
         List<Customer> result = customerService.findAllNotVipCustomers();

@@ -33,17 +33,6 @@ class MovieSessionTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Test
-    void testInitSession() {
-        movieSession.initSession();
-    }
-
-    @Test
-    void testDestroySession() {
-        when(movie.getTitle()).thenReturn("getTitleResponse");
-
-        movieSession.destroySession();
-    }
 
     @Test
     void testToString() {

@@ -48,23 +48,6 @@ public class Movie implements Serializable {
         this.description = description;
     }
 
-    public void movieInit() {
-        System.out.println("Init method of Movie");
-
-    }
-
-    public void movieDestroy() {
-        System.out.println("Init method of destroy");
-    }
-
-    @AssertTrue(message = "ERROR! DESCRIPTION IS EMPTY OR NULL")
-    public boolean isMovieWithDescription() {
-        if(this.description == null || this.description.isEmpty()) {
-            return false;
-        }
-        return true;
-    }
-
     @Override
     public String toString() {
         return "Movie: " +
@@ -73,7 +56,6 @@ public class Movie implements Serializable {
                 "Minutes: " + this.minutes + " " +
                 "Published Year: " + this.publishedYear + " " +
                 "Description: " + this.description;
-
     }
 
 }

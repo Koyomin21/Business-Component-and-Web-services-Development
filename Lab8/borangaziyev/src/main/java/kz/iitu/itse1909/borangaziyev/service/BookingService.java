@@ -7,8 +7,13 @@ import kz.iitu.itse1909.borangaziyev.database.MovieSession;
 import kz.iitu.itse1909.borangaziyev.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -79,6 +84,18 @@ public class BookingService {
     @Transactional(timeout = 2000)
     public List<Booking> getPaidBookings() {
         return bookingRepository.findPaidBookings();
+    }
+
+
+    public List<Booking> getPaidBookingsPagination(long id, int pageNo, int pageSize, String sortBy) {
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+        Page<Booking> pagedResult = bookingRepository.findAll(paging);
+        if(pagedResult.hasContent()) {
+            return pagedResult.getContent();
+        } else {
+            return new ArrayList<Booking>();
+        }
+
     }
 
 }

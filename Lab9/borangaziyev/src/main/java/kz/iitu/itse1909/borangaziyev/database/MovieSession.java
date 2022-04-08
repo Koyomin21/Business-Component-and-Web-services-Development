@@ -23,29 +23,6 @@ import java.util.List;
 @Table(name = "MovieSession")
 @Lazy
 public class MovieSession implements Serializable {
-
-    @PostConstruct
-    public void initSession() {
-        System.out.println("Initializing Session bean(postconstruct)");
-        if(sessionDate == null) {
-            sessionDate = LocalDate.of(2022, 06, 01);
-        }
-
-        if(startTime == null || endTime == null) {
-            startTime = LocalTime.of(15,0);
-            endTime = LocalTime.of(16,0);
-        }
-    }
-
-    @PreDestroy
-    public void destroySession() {
-        System.out.println("Destroying Session");
-        if(this.movie != null) {
-            System.out.println("Session of movie: " + this.movie.getTitle() + "  was Destroyed");
-        }
-
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long sessionId;

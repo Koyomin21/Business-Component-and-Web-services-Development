@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 
 @Log
 @Configuration
-@Import({CacheConfig.class, HibernateConfig.class})
+@Import({CacheConfig.class, HibernateConfig.class, Swagger2Fox.class})
 @Profile(value = "dev")
 public class Config {
 

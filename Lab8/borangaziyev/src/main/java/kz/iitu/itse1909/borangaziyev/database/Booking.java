@@ -1,5 +1,6 @@
 package kz.iitu.itse1909.borangaziyev.database;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -27,10 +28,12 @@ public class Booking implements Serializable {
     @JoinColumn(name = "customerId", referencedColumnName = "customerId")
     private Customer customer;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "sessionId")
     private MovieSession session;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "seatId")
     private Seat seat;

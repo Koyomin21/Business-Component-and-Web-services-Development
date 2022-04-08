@@ -2,6 +2,7 @@ package kz.iitu.itse1909.borangaziyev.repository;
 
 
 import kz.iitu.itse1909.borangaziyev.database.Booking;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -14,7 +15,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface BookingRepository extends CrudRepository<Booking, Long> {
+public interface BookingRepository extends JpaRepository<Booking, Long> {
 
     List<Booking> getBookingsByBookingDateAfter(LocalDate afterDate);
 

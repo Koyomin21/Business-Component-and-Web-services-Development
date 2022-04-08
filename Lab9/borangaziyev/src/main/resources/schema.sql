@@ -35,9 +35,7 @@ CREATE TABLE Customer (
     firstName varchar(255),
     lastName varchar(255),
     email varchar(255),
-    isVip boolean,
-    version int default 0,
-    avatar bytea
+    isVip boolean
 );
 
 CREATE TABLE MovieSession (

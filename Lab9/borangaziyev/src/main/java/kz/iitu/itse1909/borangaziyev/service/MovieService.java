@@ -40,14 +40,12 @@ public class MovieService {
 
     @ExecutionTimeLogger
     @Cacheable(value = "movies")
-    @Scheduled(initialDelay = 1000, fixedDelay = 10000)
     public List<Movie> getAllMovies() {
         return (List<Movie>) movieRepository.findAll();
     }
 
     public List<MovieSession> getAllSessions() { return (List<MovieSession>) sessionRepository.findAll();}
 
-    @Scheduled(fixedRateString = "${fixedRate.in.milliseconds}")
     @Cacheable(value = "movies")
     public List<Movie> getMoviesSortedByPublishedYear() {
         // getting movies from repository
@@ -87,6 +85,12 @@ public class MovieService {
         sessionRepository.saveAll(sessions);
     }
 
+    @CacheEvict(value = "movies", allEntries = true)
+    @Transactional
+    public void deleteMovie(long id) {
+        movieRepository.deleteById(id);
+    }
+
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public MovieSession getSessionById(long id) {
         return sessionRepository.findById(id).get();
@@ -102,7 +106,6 @@ public class MovieService {
         return sessionRepository.findAllByPriceBetween(startPrice, endPrice);
     }
 
-    @Scheduled(fixedRate = 1200)
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public List<Movie> findMoviesWithNoDescription() {
         return movieRepository.findMoviesWithNoDescription();

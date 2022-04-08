@@ -7,7 +7,9 @@ import kz.iitu.itse1909.borangaziyev.database.MovieSession;
 import kz.iitu.itse1909.borangaziyev.repository.CustomerRepository;
 import kz.iitu.itse1909.borangaziyev.repository.MovieSessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -79,16 +81,26 @@ public class CustomerService {
     }
 
 
-    public List<Customer> findAllNotVipCustomers() throws InterruptedException {
-        System.out.println("Started parallel method findAllNotVip");
-        Thread.sleep(3000);
-        System.out.println("Ended parallel method");
+    public List<Customer> findAllNotVipCustomers() {
         return customerRepository.findAllNotVipCustomers();
     }
 
     @Transactional(readOnly = true)
     public List<Customer> findCustomersWithNameContaining(String name) {
         return customerRepository.findAllByFirstNameorLastNameContaining(name);
+    }
+
+    @Transactional
+    @CacheEvict(value = "customers", allEntries = true)
+    public Customer updateCustomer(long id, Customer customerDetails) {
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Employee not found for this id:" + id));
+        customer.setFirstName(customerDetails.getFirstName());
+        customer.setLastName(customerDetails.getLastName());
+        customer.setEmail(customerDetails.getEmail());
+        customer.setVip(customerDetails.isVip());
+        Customer updatedCustomer = customerRepository.save(customer);
+        return updatedCustomer;
     }
 
 

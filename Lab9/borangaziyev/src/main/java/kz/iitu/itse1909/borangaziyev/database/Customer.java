@@ -1,11 +1,13 @@
 package kz.iitu.itse1909.borangaziyev.database;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.core.annotation.Order;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
@@ -22,34 +24,31 @@ public class Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long customerId;
 
+    @NotNull
     @Column(name = "firstName")
     @Size(min = 2, max = 50)
     private String firstName;
 
+    @NotNull
     @Column(name = "lastName")
     @Size(min = 2, max = 50)
     private String lastName;
 
     @Transient
-    private String fullName = firstName + " " + lastName;
+    @JsonIgnore
+    private String fullName = this.firstName + " " + this.lastName;
 
-    @Column(name = "version")
-    @Version
-    private int version;
-
+    @NotNull
     @LastModifiedDate
     @Column(name = "email")
-
     private String email;
 
+    @NotNull
     @LastModifiedBy
     @Column(name = "isVip")
     private boolean isVip;
 
-    @Lob
-    @Column(name = "avatar", columnDefinition = "BYTEA", nullable = true)
-    private byte[]photo;
-
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer")
     @OrderBy("bookingDate ASC, isPaid")
     private List<Booking> bookings;
@@ -63,4 +62,9 @@ public class Customer implements Serializable {
                 "Last Name: " + this.lastName + " " +
                 "Is Vip: " + this.isVip;
     }
+
+
+//    public boolean getIsVip() {
+//        return isVip;
+//    }
 }

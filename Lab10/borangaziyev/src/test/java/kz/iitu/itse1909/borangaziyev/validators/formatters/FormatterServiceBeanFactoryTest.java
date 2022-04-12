@@ -53,12 +53,12 @@ class FormatterServiceBeanFactoryTest {
         Formatter<DateTime> formatter = new Formatter<DateTime>() {
             @Override
             public DateTime parse(String text, Locale locale) throws ParseException {
-                return dateFormat.parseDateTime(text);
+                return null;
             }
 
             @Override
             public String print(DateTime object, Locale locale) {
-                return dateFormat.print(object);
+                return null;
             }
         };
 

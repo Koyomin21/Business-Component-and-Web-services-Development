@@ -29,7 +29,6 @@ class ErrorMessage {
     private String details;
 
     public ErrorMessage(){};
-
     public ErrorMessage(String message, String details) {
         this.message = message;
         this.details = details;

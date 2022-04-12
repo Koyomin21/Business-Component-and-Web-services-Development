@@ -44,11 +44,6 @@ class MovieServiceTest {
     }
 
     @Test
-    void testDeleteMovie() {
-        movieService.deleteMovie(1l);
-    }
-
-    @Test
     void testGetAllSessions() {
         when(movieService.getAllSessions()).thenReturn(Arrays.<MovieSession>asList(new MovieSession(new Hall(), 0, LocalDate.of(2022, Month.MARCH, 6), LocalTime.of(12, 9, 12), LocalTime.of(12, 9, 12))));
 

@@ -15,4 +15,9 @@ public class StringToHallConverter implements Converter<String, Hall> {
 
         return hall;
     }
+
+    @Override
+    public <U> Converter<String, U> andThen(Converter<? super Hall, ? extends U> after) {
+        return Converter.super.andThen(after);
+    }
 }

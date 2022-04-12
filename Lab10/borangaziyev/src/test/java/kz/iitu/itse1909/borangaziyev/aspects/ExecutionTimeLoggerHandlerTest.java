@@ -44,7 +44,21 @@ class ExecutionTimeLoggerHandlerTest {
         executionTimeLoggerHandler.allServiceClassMethods();
     }
 
+    @Test
+    void testLogExecutionTime() {
+        ProceedingJoinPoint joinPoint = mock(ProceedingJoinPoint.class);
+        MethodSignature signature = mock(MethodSignature.class);
+        Method method = mock(Method.class);
 
+        when(joinPoint.getSignature()).thenReturn(signature);
+        when(signature.getMethod()).thenReturn(method);
+
+
+
+
+        Object result = executionTimeLoggerHandler.logExecutionTime(joinPoint);
+        Assertions.assertEquals("replaceMeWithExpectedResult", result);
+    }
 }
 
 //Generated with love by TestMe :) Please report issues and submit feature requests at: http://weirddev.com/forum#!/testme

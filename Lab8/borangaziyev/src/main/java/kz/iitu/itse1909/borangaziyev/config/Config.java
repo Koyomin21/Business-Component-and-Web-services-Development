@@ -4,7 +4,6 @@ import kz.iitu.itse1909.borangaziyev.database.*;
 import kz.iitu.itse1909.borangaziyev.repository.BookingRepository;
 import kz.iitu.itse1909.borangaziyev.service.*;
 import kz.iitu.itse1909.borangaziyev.validators.converters.StringToHallConverter;
-import kz.iitu.itse1909.borangaziyev.validators.formatters.FormatterServiceBeanFactory;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -31,10 +30,7 @@ import java.util.stream.Collectors;
 @Import({CacheConfig.class, HibernateConfig.class, Swagger2Fox.class})
 @Profile(value = "dev")
 public class Config {
-
-    @Autowired
-    FormatterServiceBeanFactory formatterService;
-
+    
     @Bean
     @DependsOn("hall")
     public Seat seat() {

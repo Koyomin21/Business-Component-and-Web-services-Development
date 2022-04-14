@@ -10,8 +10,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
+
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.lang.reflect.Method;
 import java.util.logging.Logger;
@@ -44,7 +46,24 @@ class ExecutionTimeLoggerHandlerTest {
         executionTimeLoggerHandler.allServiceClassMethods();
     }
 
-
+//    @Test
+//    void testLogExecutionTime() throws Throwable {
+//        ProceedingJoinPoint joinPoint = mock(ProceedingJoinPoint.class);
+//        MethodSignature methodSignature = mock(MethodSignature.class);
+//        Method method = mock(Method.class);
+//        Object object = null;
+//
+//        when(joinPoint.getSignature()).thenReturn(methodSignature);
+//        when(methodSignature.getMethod()).thenReturn(method);
+//
+//        when(method.isAnnotationPresent(Cacheable.class)).thenReturn(true);
+//        when(method.getAnnotation(Cacheable.class)).thenReturn(new Cacheable());
+//        when(method.getName()).thenReturn("MethodName");
+//        when(joinPoint.proceed()).thenReturn(object);
+//
+//        Object result = executionTimeLoggerHandler.logExecutionTime(joinPoint);
+//
+//    }
 }
 
 //Generated with love by TestMe :) Please report issues and submit feature requests at: http://weirddev.com/forum#!/testme

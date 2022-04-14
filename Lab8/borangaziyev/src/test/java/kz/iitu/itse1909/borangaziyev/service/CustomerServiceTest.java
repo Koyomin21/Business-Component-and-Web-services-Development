@@ -114,6 +114,25 @@ class CustomerServiceTest {
         List<Customer> result = customerService.findCustomersWithNameContaining("name");
         Assertions.assertEquals(Arrays.<Customer>asList(new Customer()), result);
     }
+
+    @Test
+    void testUpdateCustomer() {
+        Customer customer = new Customer();
+        Customer customerDetails = new Customer();
+        customerDetails.setEmail("Email");
+        customerDetails.setFirstName("FirstName");
+        customerDetails.setLastName("LastName");
+        customerDetails.setVip(true);
+
+        when(customerRepository.findById(anyLong())).thenReturn(java.util.Optional.of(customer));
+        when(customerService.updateCustomer(1l, customerDetails)).thenReturn(customer);
+
+        Customer result = customerService.updateCustomer(1l, customerDetails);
+
+        Assertions.assertEquals(customer, result);
+
+
+    }
 }
 
 //Generated with love by TestMe :) Please report issues and submit feature requests at: http://weirddev.com/forum#!/testme

@@ -10,8 +10,15 @@ class StringToHallConverterTest {
 
     @Test
     void testConvert() {
-        Hall result = stringToHallConverter.convert("source");
-        Assertions.assertEquals(new Hall(), result);
+        // Expected result
+        Hall expected = new Hall();
+        expected.setHallId(1);
+        expected.setName("HallName");
+        expected.setCapacity(120);
+
+
+        Hall result = stringToHallConverter.convert("1,HallName,120");
+        Assertions.assertEquals(expected, result);
     }
 
 //    @Test

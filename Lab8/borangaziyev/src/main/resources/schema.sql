@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS Customer;
 DROP TABLE IF EXISTS Movie;
 DROP TABLE IF EXISTS Seat;
 DROP TABLE IF EXISTS Hall;
+DROP TABLE IF EXISTS Users;
 
 
 
@@ -55,4 +56,16 @@ CREATE TABLE Booking (
     customerId int references Customer(customerId),
     sessionId int references MovieSession(sessionId),
     seatId int references Seat(seatId)
+);
+
+CREATE TABLE Users(
+    userId serial primary key,
+    username varchar,
+    password varchar,
+    token varchar,
+    failedLoginAttempts int,
+    loginDisabled boolean,
+    accountVerified boolean,
+    roleName varchar
+
 );

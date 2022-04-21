@@ -7,15 +7,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import javax.validation.constraints.AssertFalse;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Month;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class MovieTest {
     @Mock
@@ -26,16 +24,6 @@ class MovieTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-    }
-
-    @Test
-    void testMovieInit() {
-        movie.movieInit();
-    }
-
-    @Test
-    void testMovieDestroy() {
-        movie.movieDestroy();
     }
 
     @Test
@@ -71,13 +59,13 @@ class MovieTest {
 
     @Test
     void testSetSessions() {
-        movie.setSessions(Arrays.<MovieSession>asList(new MovieSession(new Hall(), 0, LocalDate.of(2022, Month.FEBRUARY, 8), LocalTime.of(14, 0, 41), LocalTime.of(14, 0, 41))));
+        movie.setSessions(Arrays.<MovieSession>asList(new MovieSession(new Hall(), 0, LocalDate.of(2022, Month.APRIL, 12), LocalTime.of(17, 42, 26), LocalTime.of(17, 42, 26))));
     }
 
     @Test
     void testEquals() {
         boolean result = movie.equals("o");
-        Assertions.assertEquals(false, result);
+        Assertions.assertFalse(result);
     }
 
     @Test
@@ -88,28 +76,11 @@ class MovieTest {
 
     @Test
     void testHashCode() {
+        int expected = movie.hashCode();
+
+
         int result = movie.hashCode();
-        Movie movie2 = movie;
-        Assertions.assertEquals(movie2.hashCode(), result);
-    }
-
-    @Test
-    void isMovieWithDescription() {
-        Movie movie = mock(Movie.class);
-        movie.setDescription("");
-
-        when(movie.isMovieWithDescription()).thenReturn(false);
-        Boolean result = movie.isMovieWithDescription();
-
-        movie.setDescription("asas");
-        when(movie.isMovieWithDescription()).thenReturn(true);
-
-
-        Boolean result2 = movie.isMovieWithDescription();
-
-        Assertions.assertFalse(result);
-        Assertions.assertTrue(result2);
-
+        Assertions.assertEquals(expected, result);
     }
 }
 

@@ -8,9 +8,11 @@ import kz.iitu.itse1909.borangaziyev.repository.MovieSessionRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.commons.util.ReflectionUtils;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -44,6 +46,11 @@ class MovieServiceTest {
     }
 
     @Test
+    void testDeleteMovie() {
+        movieService.deleteMovie(1l);
+    }
+
+    @Test
     void testGetAllSessions() {
         when(movieService.getAllSessions()).thenReturn(Arrays.<MovieSession>asList(new MovieSession(new Hall(), 0, LocalDate.of(2022, Month.MARCH, 6), LocalTime.of(12, 9, 12), LocalTime.of(12, 9, 12))));
 
@@ -67,7 +74,8 @@ class MovieServiceTest {
         MovieSession session2 = new MovieSession();
         Movie movie = new Movie("title", 0, 0, "description");
 
-        session.setMovie(movie);
+        ReflectionTestUtils.setField(session, "movie", movie);
+//        session.setMovie(movie);
 
         when(sessionRepository.findById(1l)).thenReturn(Optional.of(session));
         when(sessionRepository.findById(0l)).thenReturn(Optional.of(session2));

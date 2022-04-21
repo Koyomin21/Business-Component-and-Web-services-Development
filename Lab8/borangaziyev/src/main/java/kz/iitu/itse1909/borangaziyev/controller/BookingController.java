@@ -51,19 +51,15 @@ public class BookingController {
     @GetMapping(value = "all/")
     public ResponseEntity<List<Booking>> getAllBookings(
             @RequestHeader Map<String, String> headers) {
-        try {
-            List<Booking> bookings = bookingService.getAllBookings();
 
-            headers.forEach((key, value) -> {
-                log.info(String.format("Header '%s' = %s", key, value));
-            });
+        List<Booking> bookings = bookingService.getAllBookings();
 
-            return ResponseEntity.ok(bookings);
-        } catch (Exception e) {
-            throw new ResponseStatusException(
-                    HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), e
-            );
-        }
+        headers.forEach((key, value) -> {
+            log.info(String.format("Header '%s' = %s", key, value));
+        });
+
+        return ResponseEntity.ok(bookings);
+
     }
 
 
@@ -74,37 +70,27 @@ public class BookingController {
             @PathVariable(value = "pageNo") int pageNo,
             @PathVariable(value = "pageSize") int pageSize,
             @PathVariable(value = "sortBy") String sortBy) {
-        try {
-            List<Booking> bookings = bookingService.getPaidBookingsPagination(id, pageNo, pageSize, sortBy);
 
-            return ResponseEntity.ok(bookings);
-        } catch (Exception e) {
-            throw new ResponseStatusException(
-                    HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), e
-            );
-        }
+        List<Booking> bookings = bookingService.getPaidBookingsPagination(id, pageNo, pageSize, sortBy);
+
+        return ResponseEntity.ok(bookings);
+
     }
 
     @GetMapping("downloadFile/")
-    public ResponseEntity downloadFile()  {
+    public ResponseEntity downloadFile() throws FileNotFoundException {
 
-        try {
 
-            File file = new File(downloadFilePath);
+        File file = new File(downloadFilePath);
 
-            InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+        InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
 
-            return ResponseEntity.ok()
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + file.getName())
-                    .contentLength(file.length())
-                    .contentType(MediaType.TEXT_PLAIN)
-                    .body(resource);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + file.getName())
+                .contentLength(file.length())
+                .contentType(MediaType.TEXT_PLAIN)
+                .body(resource);
 
-        } catch (FileNotFoundException e) {
-            throw new ResponseStatusException(
-                    HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), e
-            );
-        }
 
     }
 

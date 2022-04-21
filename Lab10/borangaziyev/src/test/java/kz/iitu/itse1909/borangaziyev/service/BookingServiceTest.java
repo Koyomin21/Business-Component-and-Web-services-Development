@@ -3,6 +3,7 @@ package kz.iitu.itse1909.borangaziyev.service;
 import kz.iitu.itse1909.borangaziyev.database.Booking;
 import kz.iitu.itse1909.borangaziyev.database.Customer;
 import kz.iitu.itse1909.borangaziyev.database.MovieSession;
+import kz.iitu.itse1909.borangaziyev.database.Seat;
 import kz.iitu.itse1909.borangaziyev.repository.BookingRepository;
 import kz.iitu.itse1909.borangaziyev.repository.CustomerRepository;
 import kz.iitu.itse1909.borangaziyev.repository.MovieSessionRepository;
@@ -12,9 +13,15 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.data.domain.*;
+import org.springframework.test.util.ReflectionTestUtils;
+import org.springframework.util.Assert;
 
+import java.awt.print.Book;
+import java.sql.Ref;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -50,7 +57,8 @@ class BookingServiceTest {
 
         Booking booking = new Booking();
 
-        booking.setPaid(true);
+        ReflectionTestUtils.setField(booking, "isPaid", true);
+
         customer.setFirstName("First NAme ");
         customer.setBookings(Arrays.asList(booking));
         customer2.setBookings(Arrays.asList());
@@ -108,6 +116,8 @@ class BookingServiceTest {
         List<Booking> result = bookingService.getPaidBookings();
         Assertions.assertEquals(Arrays.<Booking>asList(new Booking()), result);
     }
+
+
 }
 
 //Generated with love by TestMe :) Please report issues and submit feature requests at: http://weirddev.com/forum#!/testme

@@ -1,0 +1,55 @@
+{
+	"info": {
+		"_postman_id": "e32235ab-58c3-4734-a41f-1e281ba6441a",
+		"name": "JMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Send Message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "Sometging 2\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/jms/sendMessage/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jms",
+						"sendMessage",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get message",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/jms/getMessage/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jms",
+						"getMessage",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

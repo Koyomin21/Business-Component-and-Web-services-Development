@@ -9,12 +9,15 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import javax.servlet.ServletContext;
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import static org.mockito.Mockito.*;
@@ -38,33 +41,33 @@ class BookingControllerTest {
 
     @Test
     void testGetAllBookings() {
-        when(bookingService.getAllBookings()).thenReturn(Arrays.<Booking>asList(new Booking()));
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Key", "Value");
 
-        ResponseEntity<List<Booking>> result = bookingController.getAllBookings(new HashMap<String, String>() {{
-            put("String", "String");
-        }});
-        Assertions.assertEquals(null, result);
+        ResponseEntity<List<Booking>> responseEntity = new ResponseEntity<List<Booking>>(HttpStatus.OK);
+
+
+        when(bookingService.getAllBookings()).thenReturn(Arrays.<Booking>asList());
+//        when(bookingController.getAllBookings(headers)).thenReturn(responseEntity);
+
+        ResponseEntity<List<Booking>> result = bookingController.getAllBookings(headers);
+
+
+
+        Assertions.assertEquals("<200 OK OK,[],[]>", result.toString());
     }
 
     @Test
     void testGetPaidBookingsByCustomerId() {
-        when(bookingService.getPaidBookingsPagination(anyLong(), anyInt(), anyInt(), anyString())).thenReturn(Arrays.<Booking>asList(new Booking()));
+        when(bookingService.getPaidBookingsPagination(anyLong(), anyInt(), anyInt(), anyString())).thenReturn(Arrays.<Booking>asList());
 
         ResponseEntity<List<Booking>> result = bookingController.getPaidBookingsByCustomerId(0L, 0, 0, "sortBy");
-        Assertions.assertEquals(null, result);
+        Assertions.assertEquals("<200 OK OK,[],[]>", result.toString());
     }
 
-    @Test
-    void testDownloadFile() {
-        ResponseEntity result = bookingController.downloadFile();
-        Assertions.assertEquals(null, result);
-    }
 
-    @Test
-    void testUploadFile() {
-        ResponseEntity result = bookingController.uploadFile("fileName", null);
-        Assertions.assertEquals(null, result);
-    }
+
+
 }
 
 //Generated with love by TestMe :) Please report issues and submit feature requests at: http://weirddev.com/forum#!/testme

@@ -1,6 +1,6 @@
 package kz.iitu.itse1909.borangaziyev.service;
 
-import kz.iitu.itse1909.borangaziyev.aspects.ExecutionTimeLogger;
+
 import kz.iitu.itse1909.borangaziyev.database.Booking;
 import kz.iitu.itse1909.borangaziyev.database.Customer;
 import kz.iitu.itse1909.borangaziyev.database.MovieSession;
@@ -34,13 +34,12 @@ public class BookingService {
 
     }
 
-    @ExecutionTimeLogger
+
     @Cacheable(value = "bookings")
     public List<Booking> getAllBookings() {
         return (List<Booking>) bookingRepository.findAll();
     }
 
-    @ExecutionTimeLogger
     @Cacheable(value = "bookings")
     public List<Booking> getPaidBookingsByCustomerId(long id) {
         // getting customer

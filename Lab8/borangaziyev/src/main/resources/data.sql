@@ -49,7 +49,9 @@ VALUES (1, 1, 2, '20221009', true),
        (3, 5, 2, '20220605', false),
        (4, 5, 2, '20220606', false);
 
-
-
+INSERT INTO Users(username, password, roleName, failedLoginAttempts, loginDisabled, accountVerified)
+VALUES ('Anuar', '$2a$12$aBwwqt7/O3ZHYD1rZ8B7PeheJkFRZ4R1kZixH7bi2qfRXInt5OUZS', 'Admin', 0, false, true),
+       ('Elvira', '$2a$12$aBwwqt7/O3ZHYD1rZ8B7PeheJkFRZ4R1kZixH7bi2qfRXInt5OUZS', 'Mortal', 0, false, true),
+       ('Aldick', '$2a$12$aBwwqt7/O3ZHYD1rZ8B7PeheJkFRZ4R1kZixH7bi2qfRXInt5OUZS', 'Mortal', 0, false, true);
 
 

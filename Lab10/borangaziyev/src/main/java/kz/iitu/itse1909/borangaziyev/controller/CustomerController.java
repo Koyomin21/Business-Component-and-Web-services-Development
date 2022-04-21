@@ -34,30 +34,19 @@ public class CustomerController {
     @GetMapping(value = "all/")
     @ResponseBody
     public List<Customer> getAllCustomers() {
-        try {
-            List<Customer> customers = customerService.getAllCustomers();
 
-            return customers;
-        } catch (Exception e) {
-            throw new ResponseStatusException(
-                    HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), e
-            );
-        }
+        List<Customer> customers = customerService.getAllCustomers();
+        return customers;
+
     }
 
     @PutMapping(value = "updCustomer/{id:[0-9]+}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable(value = "id") long customerId,
                                                    @Valid @RequestBody Customer customerDetails) {
-        try {
-            final Customer updatedCustomer = customerService.updateCustomer(customerId,customerDetails);
-            return ResponseEntity.ok(updatedCustomer);
-        } catch (Exception e) {
-            throw new ResponseStatusException(
-                    HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), e
-            );
-        }
-
+        final Customer updatedCustomer = customerService.updateCustomer(customerId,customerDetails);
+        return ResponseEntity.ok(updatedCustomer);
     }
+
 
     @RequestMapping(value = "checkCustomer",method = RequestMethod.HEAD)
     public ResponseEntity<Customer> checkCustomerExistence(@RequestParam long customerId) {
@@ -69,7 +58,7 @@ public class CustomerController {
                     .orElseThrow(()->new RuntimeException("No such Customer!"));
 
             return ResponseEntity.ok(cust);
-        } catch (Exception e) {
+        } catch (ResponseStatusException e) {
             throw new ResponseStatusException(
                     HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), e
             );

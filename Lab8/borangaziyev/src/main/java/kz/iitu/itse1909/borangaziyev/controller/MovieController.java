@@ -6,7 +6,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kz.iitu.itse1909.borangaziyev.database.Movie;
-import kz.iitu.itse1909.borangaziyev.exceptions.RestResponseEntityExceptionHandler;
+import kz.iitu.itse1909.borangaziyev.jms.JmsService;
 import kz.iitu.itse1909.borangaziyev.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.ConstraintViolationException;
-import java.util.ArrayList;
-import java.util.EmptyStackException;
 import java.util.List;
 
 @RestController
@@ -25,6 +23,9 @@ public class MovieController {
 
     private MovieService movieService;
     private ObjectMapper om;
+
+    @Autowired
+    private JmsService jmsService;
 
     @Autowired
     public MovieController(MovieService movieService, ObjectMapper om) {
@@ -37,15 +38,10 @@ public class MovieController {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public List<Movie> getAllMovies() {
-        try {
-            List<Movie> movies = movieService.getAllMovies();
+        List<Movie> movies = movieService.getAllMovies();
 
-            return movies;
-        } catch (Exception e) {
-            throw new ResponseStatusException(
-                    HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), e
-            );
-        }
+        return movies;
+
     }
 
     @GetMapping("sortedByYear/")
@@ -61,36 +57,23 @@ public class MovieController {
 
 
     @PostMapping("addMovies/")
-    public @ResponseBody String addNewMovies(@RequestBody String moviesListJson)  {
+    public @ResponseBody String addNewMovies(@RequestBody String moviesListJson) throws JsonProcessingException {
         System.out.println(moviesListJson);
         String result = "";
-        try {
-            List<Movie> moviesToAdd = om.readValue(moviesListJson, new TypeReference<List<Movie>>(){});
 
-            if(moviesToAdd == null || moviesToAdd.isEmpty())
-            {
-                throw new RuntimeException("Null or empty");
-            }
-            movieService.addNewMovies(moviesToAdd);
-            result = "Successfully saved";
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        } catch (ConstraintViolationException e) {
-            result = "Constration Violation! Enter good input!";
+        List<Movie> moviesToAdd = om.readValue(moviesListJson, new TypeReference<List<Movie>>(){});
+
+        if(moviesToAdd == null || moviesToAdd.isEmpty())
+        {
+            throw new RuntimeException("Null or empty");
         }
-
+        movieService.addNewMovies(moviesToAdd);
+        result = "Successfully saved";
         return result;
     }
 
     @DeleteMapping("delete/{id:[0-9]+}")
     public @ResponseBody String deleteMovie(@PathVariable long id) {
-        try {
-            movieService.deleteMovie(id);
-        } catch (EmptyResultDataAccessException e) {
-            return "No movie with such id!";
-        }
 
         movieService.deleteMovie(id);
 

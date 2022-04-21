@@ -1,6 +1,6 @@
 package kz.iitu.itse1909.borangaziyev.service;
 
-import kz.iitu.itse1909.borangaziyev.aspects.ExecutionTimeLogger;
+
 import kz.iitu.itse1909.borangaziyev.database.Booking;
 import kz.iitu.itse1909.borangaziyev.database.Customer;
 import kz.iitu.itse1909.borangaziyev.database.MovieSession;
@@ -32,7 +32,6 @@ public class CustomerService {
         this.movieSessionRepository = movieRepo;
     }
 
-    @ExecutionTimeLogger
     @Cacheable("customers")
     @Transactional(readOnly = true)
     public List<Customer> getAllCustomers() {

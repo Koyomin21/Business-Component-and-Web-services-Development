@@ -1,7 +1,6 @@
 package kz.iitu.itse1909.borangaziyev.service;
 
-import kz.iitu.itse1909.borangaziyev.aspects.CheckArguments;
-import kz.iitu.itse1909.borangaziyev.aspects.ExecutionTimeLogger;
+
 import kz.iitu.itse1909.borangaziyev.database.Movie;
 import kz.iitu.itse1909.borangaziyev.database.MovieSession;
 import kz.iitu.itse1909.borangaziyev.repository.MovieRepository;
@@ -38,7 +37,6 @@ public class MovieService {
         this.sessionRepository = sessionRepository;
     }
 
-    @ExecutionTimeLogger
     @Cacheable(value = "movies")
     public List<Movie> getAllMovies() {
         return (List<Movie>) movieRepository.findAll();
@@ -58,7 +56,6 @@ public class MovieService {
         return sortedMovies;
     }
 
-    @CheckArguments
     public Movie getMovieBySessionId(long sessionId) {
         // getting session
         Movie movie = null;

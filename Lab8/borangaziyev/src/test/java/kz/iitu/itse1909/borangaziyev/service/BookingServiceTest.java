@@ -14,9 +14,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.data.domain.*;
+import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.util.Assert;
 
 import java.awt.print.Book;
+import java.sql.Ref;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -55,7 +57,8 @@ class BookingServiceTest {
 
         Booking booking = new Booking();
 
-        booking.setPaid(true);
+        ReflectionTestUtils.setField(booking, "isPaid", true);
+
         customer.setFirstName("First NAme ");
         customer.setBookings(Arrays.asList(booking));
         customer2.setBookings(Arrays.asList());
@@ -114,28 +117,7 @@ class BookingServiceTest {
         Assertions.assertEquals(Arrays.<Booking>asList(new Booking()), result);
     }
 
-    @Test
-    void testGetPaidBookingsPagination() {
-        Booking booking = new Booking();
-        booking.setCustomer(new Customer());
-        booking.setSession(new MovieSession());
-        booking.setSeat(new Seat());
 
-        List<Booking> bookingList = Arrays.asList(booking);
-        Pageable paging = PageRequest.of(1, 1, Sort.by("isPaid"));
-        Page<Booking> bookingPage = new PageImpl<Booking>(bookingList);
-        System.out.println(bookingPage.getContent());
-
-        when(bookingRepository.findAll(paging)).thenReturn(bookingPage);
-//        doReturn(bookingPage).when(bookingRepository.findAll(paging));
-
-        when(bookingService.getPaidBookingsPagination(1l, 1, 1, "isPaid")).thenReturn(bookingList);
-
-        List<Booking> result = bookingService.getPaidBookingsPagination(1l, 1, 1, "isPaid");
-
-
-        Assertions.assertEquals(bookingList, result);
-    }
 }
 
 //Generated with love by TestMe :) Please report issues and submit feature requests at: http://weirddev.com/forum#!/testme

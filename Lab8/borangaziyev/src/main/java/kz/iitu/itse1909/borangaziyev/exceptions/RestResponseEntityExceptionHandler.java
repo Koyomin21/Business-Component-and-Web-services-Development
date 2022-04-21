@@ -16,7 +16,6 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<ErrorMessage> somethingWentWrong(Exception ex) {
         ErrorMessage exceptionResponse = new ErrorMessage(ex.getMessage(), "What else do you want to add");
-        System.out.println("Error Message !!!");
         return new ResponseEntity<ErrorMessage>(exceptionResponse,
                 new HttpHeaders(), HttpStatus.BAD_REQUEST);
     };

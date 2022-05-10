@@ -23,8 +23,8 @@ INSERT INTO BUILDING(address, buildingTypeId, userId) VALUES
 ('Ghandi Park', 1, 3), ('Buckingham Palace', 1, 1);
 
 INSERT INTO ELECTRICITYBILL(userId, unitsUsed, startPeriod, endPeriod, totalSum) VALUES
-(1, 100, '01-03-2022', '01-04-2022', 1700),
-(2, 50, '01-03-2022', '01-04-2022', 850),
+(1, 100, '02-03-2022', '01-04-2022', 1700),
+(2, 50, '03-03-2022', '01-04-2022', 850),
 (3, 45, '01-03-2022', '01-04-2022', 765);
 
 INSERT INTO ELECTRICITYBILLDETAILS(electroBillId, providerId, paymentId, debtId) VALUES

@@ -9,9 +9,9 @@ import java.time.LocalDate;
 @Data
 @Component
 public class ElectricityBill {
-    private int billId;
+    private int electroBillId;
     private int userId;
-    private int unit;
+    private int unitsUsed;
     private LocalDate startPeriod;
     private LocalDate endPeriod;
     private int totalSum;

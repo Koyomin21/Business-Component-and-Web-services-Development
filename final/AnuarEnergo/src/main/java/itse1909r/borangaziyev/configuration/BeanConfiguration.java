@@ -2,14 +2,19 @@ package itse1909r.borangaziyev.configuration;
 
 import itse1909r.borangaziyev.aop.CheckArguments;
 import itse1909r.borangaziyev.aop.ExecutionTimeLogger;
+import itse1909r.borangaziyev.converters.StringToUser;
 import itse1909r.borangaziyev.model.*;
 import itse1909r.borangaziyev.repository.UserRepository;
+import itse1909r.borangaziyev.service.ElectricityBillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.info.ProjectInfoProperties;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.Arrays;
 
 @Configuration
 @PropertySource("classpath:user.properties")
@@ -17,13 +22,13 @@ public class BeanConfiguration {
 
     private Environment environment;
 
-    @Value("user.username")
+    @Value("${user.username}")
     private String defaultUsername;
-    @Value("user.password")
+    @Value("${user.password}")
     private String defaultPassword;
-    @Value("user.firstName")
+    @Value("${user.firstName}")
     private String defaultFirstName;
-    @Value("user.lastName")
+    @Value("${user.lastName}")
     private String defaultLastName;
 
 
@@ -71,10 +76,12 @@ public class BeanConfiguration {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private ElectricityBillService billService;
 
     @Bean
     public void testRepo() {
-        System.out.println(userRepository.getAll());
+        System.out.println(billService.getAllBills());
     }
 
 
